@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {routes} from "./app.routes";
 import {LoginComponent} from './login/login.component';
+import {CategoryPipe} from './pipes/category.pipe';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,13 @@ import {LoginComponent} from './login/login.component';
     ProductListComponent,
     ProductDetailComponent,
     ShoppingCartComponent,
+    CategoryPipe,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-
   ],
   providers: [],
   bootstrap: [AppComponent]
