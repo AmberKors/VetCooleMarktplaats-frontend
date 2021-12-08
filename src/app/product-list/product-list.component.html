@@ -4,6 +4,8 @@
     <th>Name</th>
     <th>Category</th>
     <th>Price</th>
+    <th></th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -16,6 +18,12 @@
     </td>
     <td>
       {{product.price | currency:'EUR'}}
+    </td>
+    <td>
+      <div><i class="fas fa-info-circle" routerLink="/products/{{product.id}}"></i></div>
+    </td>
+    <td>
+      <div><i class="fas fa-shopping-cart"></i></div>
     </td>
   </tr>
   </tbody>
