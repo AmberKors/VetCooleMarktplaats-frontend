@@ -7,12 +7,15 @@ import {User} from '../models/User';
 export class UserService {
 
   private uri = serverUrl + '/users';
+  private user: User;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   add(u: User): void {
     console.log(u);
-    this.http.post(this.uri, u);
+    this.http.post<User>(this.uri, u).subscribe(
+      response =>this.user= response);
   }
-}
 
+}
