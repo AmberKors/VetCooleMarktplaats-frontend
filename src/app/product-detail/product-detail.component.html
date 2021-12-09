@@ -1,1 +1,45 @@
-<p>product-detail works!</p>
+<table class="table" *ngIf="product != undefined">
+  <tbody>
+  <tr>
+    <th>
+      Naam:
+    </th>
+    <td>
+      {{product.name}}
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Sinds:
+    </th>
+    <td>
+      {{product.datePublished | date:'shortDate'}}
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Categorie:
+    </th>
+    <td>
+      {{product.category | category}}
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Prijs:
+    </th>
+    <td>
+      {{product.price | currency:'EUR'}}
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Omschrijving:
+    </th>
+    <td>
+      {{product.description}}
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-primary">Voeg toe aan winkelwagen <i class="fas fa-shopping-cart"></i></button>
