@@ -9,20 +9,28 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProductService {
   private url = serverUrl + '/products'
-  private productSubject = new Subject<Product[]>();
+  private productList$ = new Subject<Product[]>();
+  public product$ = new Subject<Product>();
 
   constructor(private http: HttpClient) {
   }
 
   get productsUpdated$(): Subject<Product[]> {
-    return this.productSubject;
+    return this.productList$;
   }
 
   getProducts(): Observable<Product[]> {
     this.http.get<Product[]>(this.url).subscribe(products => {
-      this.productSubject.next(products);
+      this.productList$.next(products);
     });
-    return this.productSubject;
+    return this.productList$;
+  }
+
+  getProduct(id: number) {
+    console.log("word dit uberhaupt aangesproken?")
+    this.http.get<Product>(this.url + "/" + id).subscribe(product => {
+      this.product$.next(product);
+    })
   }
 
   addProduct(product: Product) {
