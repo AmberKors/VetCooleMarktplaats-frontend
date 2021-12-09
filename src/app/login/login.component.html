@@ -1,1 +1,13 @@
-<p>login works!</p>
+<h2>Log in</h2>
+<form (submit)="login()" novalidate #f="ngForm">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="user.username" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+    <button [disabled]="f.invalid">Ok</button>
+  </div>
+</form>
+<p>{{message$ | async}}</p>
