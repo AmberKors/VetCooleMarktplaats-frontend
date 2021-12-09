@@ -1,1 +1,26 @@
-<p>user-registration works!</p>
+
+<H1> Welkom onbekende, registreer jezelf voordat je gebruik maakt van de Marktplaats</H1>
+
+<form (submit)="addContact()" novalidate #f="ngForm">
+  <div>
+    <label for="firstName">First name:</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="newUser.firstName" required>
+  </div>
+  <div>
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" [(ngModel)]="newUser.lastName" required>
+  </div>
+  <div>
+    <label for="email">E-mail address:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="newUser.email" required>
+  </div>
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="newUser.username" required>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" [(ngModel)]="newUser.password" required>
+    <button [disabled]="f.invalid">Registreer</button>
+  </div>
+</form>
