@@ -10,6 +10,6 @@ export const routes: Route[] = [
   {path: '', component: HomePage},
   {path: 'login', component: LoginComponent},
   {path: 'user-registration', component: UserRegistrationComponent},
-  {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'shopping-cart/1', component: ShoppingCartComponent}, // hardcoded id of 1
   {path: 'products/:id', component: ProductDetailComponent}
 ];

@@ -15,10 +15,6 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  get productsUpdated$(): Subject<Product[]> {
-    return this.productList$;
-  }
-
   getProducts(): Observable<Product[]> {
     this.http.get<Product[]>(this.url).subscribe(products => {
       this.productList$.next(products);
@@ -27,10 +23,9 @@ export class ProductService {
   }
 
   getProduct(id: number) {
-    console.log("word dit uberhaupt aangesproken?")
     this.http.get<Product>(this.url + "/" + id).subscribe(product => {
       this.product$.next(product);
-    })
+    });
   }
 
   addProduct(product: Product) {
