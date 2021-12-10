@@ -42,4 +42,23 @@
   </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-primary">Voeg toe aan winkelwagen <i class="fas fa-shopping-cart"></i></button>
+
+<div *ngIf="product == undefined">
+  Ohjee, dit product lijkt niet te bestaan.
+</div>
+
+<div class="row">
+  <div class="col-1">
+    <button type="button" class="btn btn-primary" (click)="back()">
+      <i class="fas fa-angle-left"></i> Terug
+    </button>
+  </div>
+  <div class="col-2" *ngIf="product != undefined">
+    <button type="button" class="btn btn-primary">
+      Voeg toe <i class="fas fa-shopping-cart"></i>
+    </button>
+  </div>
+</div>
+
+
+
