@@ -8,5 +8,6 @@ export const routes: Route[] = [
   {path: '', component: HomePage},
   {path: 'logout', component: LogoutComponent},
   {path: 'shopping-cart/:id', component: ShoppingCartComponent},
-  {path: 'products/:id', component: ProductDetailComponent}
+  {path: 'products/:id', component: ProductDetailComponent},
+  {path: 'logout', component: LogoutComponent},
 ];

@@ -16,6 +16,7 @@ import {LoginComponent} from './login/login.component';
 import {CategoryPipe} from './pipes/category.pipe';
 import {LogoutComponent} from "./login/logout.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,6 @@ import {LogoutComponent} from "./login/logout.component";
     ProductDetailComponent,
     ShoppingCartComponent,
     CategoryPipe,
-
   ],
   imports: [
     BrowserModule,

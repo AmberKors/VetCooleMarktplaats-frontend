@@ -1,6 +1,8 @@
-.navbar-brand {
-  margin-left: 0.5em;
 
+
+.navbar{
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .container {
@@ -8,11 +10,10 @@
 
 }
 
-.footer-context {
 
-}
 
 .footer {
+  margin-top:1rem;
   position: absolute;
   bottom: 0;
   align-self: center;
