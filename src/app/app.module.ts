@@ -14,6 +14,7 @@ import {RouterModule} from "@angular/router";
 import {routes} from "./app.routes";
 import {LoginComponent} from './login/login.component';
 import {CategoryPipe} from './pipes/category.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {CategoryPipe} from './pipes/category.pipe';
     ProductDetailComponent,
     ShoppingCartComponent,
     CategoryPipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

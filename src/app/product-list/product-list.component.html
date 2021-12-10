@@ -1,4 +1,8 @@
-<table class="table">
+<div class="form-group mb-4">
+  <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
+</div>
+
+<table class="table" *ngIf="products | filter: searchText">
   <thead>
   <tr>
     <th>Name</th>
@@ -9,7 +13,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of products">
+  <tr *ngFor="let product of products | filter: searchText">
     <td>
       {{product.name}}
     </td>
