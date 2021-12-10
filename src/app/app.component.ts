@@ -9,6 +9,7 @@ import {LoginService} from "./services/login.service";
 })
 export class AppComponent {
   title = 'Vet Coole Marktplaats';
+  loginOrRegister = "login";
 
   loggedIn$ = this.loginService.loggedIn$;
   loggedOut$ = this.loginService.loggedOut$;
@@ -41,6 +42,14 @@ export class AppComponent {
       this.logLink = 'login';
       this.loggedInMessage = 'Not logged in.';
     });
+  }
+
+  toggleRegistrationInlog() {
+    if (this.loginOrRegister == "login") {
+      this.loginOrRegister = "register";
+    } else {
+      this.loginOrRegister = "login";
+    }
   }
 
   isLoggedIn(): boolean {
