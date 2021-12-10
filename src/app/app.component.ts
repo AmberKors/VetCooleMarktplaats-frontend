@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "./services/login.service";
+import {User} from "./models/User";
 
 @Component({
   selector: 'app-root',
@@ -15,24 +16,27 @@ export class AppComponent {
   loggedOut$ = this.loginService.loggedOut$;
 
   loggedIn = false;
-  logLabel = 'Login';
-  logLink = 'login';
   loggedInMessage = 'Not logged in.';
+  private loggedInUser: User;
 
 
   constructor(private router: Router,
               private loginService: LoginService) {
+
+    let recievedFromStorage = localStorage.getItem('loggedInUser');
+    if (recievedFromStorage != null) {
+      this.loggedInUser = JSON.parse(recievedFromStorage);
+      this.loggedIn = true;
+      this.loggedInMessage = `Logged in as ${this.loggedInUser.username}.`;
+    }
+
     this.loggedIn$.subscribe((userName) => {
       this.loggedIn = true;
-      this.logLabel = 'Logout';
-      this.logLink = 'logout';
       this.loggedInMessage = `Logged in as ${userName}.`;
     });
 
     this.loggedOut$.subscribe((userName) => {
       this.loggedIn = false;
-      this.logLabel = 'Login';
-      this.logLink = 'login';
       this.loggedInMessage = 'Not logged in.';
     });
   }
