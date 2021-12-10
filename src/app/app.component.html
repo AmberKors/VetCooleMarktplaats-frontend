@@ -10,8 +10,9 @@
       <a class="nav-item nav-link" routerLink="/login">Login</a>
       <a class="nav-item nav-link" routerLink="/user-registration">Registreer</a>
       <a class="nav-item nav-link" routerLink="/shopping-cart/1">Winkelwagen</a> <!-- hard coded shoppingcart id 1 -->
-    </div>
+      <a routerLink="/{{logLink}}" routerLinkActive="activeMenu">{{logLabel}}</a><   </div>
   </div>
+  <div class="user">{{loggedInMessage}}</div>
 </nav>
 
 
