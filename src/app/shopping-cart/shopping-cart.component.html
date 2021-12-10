@@ -26,5 +26,24 @@
       <div><i class="fas fa-ban"></i></div>
     </td>
   </tr>
+  <tr>
+    <td></td>
+    <th>Totaal:</th>
+    <td>{{totalPrice | currency:'EUR'}}</td>
+    <td></td>
+    <td></td>
+  </tr>
   </tbody>
 </table>
+<div class="row">
+  <div class="col-1">
+    <button type="button" class="btn btn-primary" (click)="back()">
+      <i class="fas fa-angle-left"></i> Terug
+    </button>
+  </div>
+  <div class="col-2" *ngIf="products != undefined">
+    <button type="button" class="btn btn-primary">
+      Betalen <i class="fas fa-coins"></i>
+    </button>
+  </div>
+</div>
