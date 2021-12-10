@@ -23,7 +23,7 @@
           </div>
 
           <div class="col-sm">
-            <input type="text" id="price" name="price" [(ngModel)]="newProduct.price" required>
+            <input type="number" id="price" name="price" step='0.01' lang="en" [(ngModel)]="newProduct.price" required>
           </div>
         </div>
 
@@ -39,11 +39,8 @@
           <label for="category">Categorie:</label>
         </div>
         <div class="col-sm">
-<!--          <input type="text" id="category" name="category" [(ngModel)]="newProduct.category" required>-->
-
-          <select id="category" name="category">
-            <option value='' disabled selected>Categorie</option>
-            <option *ngFor="let name of categoryOptions" [value]>{{category[name]}} </option>
+          <select id="category" name="category" value [(ngModel)]="newProduct.category">
+            <option *ngFor="let category of categoryOptions" value="{{category}}">{{category | category}} </option>
           </select>
 
 
