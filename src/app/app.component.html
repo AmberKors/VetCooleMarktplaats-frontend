@@ -7,8 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" routerLink="/">Home</a>
-      <a class="nav-item nav-link" routerLink="/{{logLink}}" routerLinkActive="activeMenu">{{logLabel}}</a>
-      <a *ngIf="!loggedIn" class="nav-item nav-link" routerLink="/user-registration">Registreer</a>
+      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/logout" routerLinkActive="activeMenu">Logout</a>
       <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/shopping-cart/{{shoppingCartId}}">Winkelwagen</a>
     </div>
   </div>
@@ -17,8 +16,21 @@
 
 
 <h1>{{title}}</h1>
+
 <div class="container">
-  <app-login *ngIf="!loggedIn"></app-login>
-  <button type="button" class="btn btn-primary" *ngIf="!loggedIn" routerLink="/user-registration">Registreer</button>
-  <router-outlet></router-outlet>
+
+  <div *ngIf="!loggedIn && loginOrRegister == 'login'">
+    <app-login></app-login>
+    <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Registreer</button>
+  </div>
+
+  <div *ngIf="!loggedIn && loginOrRegister == 'register'">
+    <app-user-registration></app-user-registration>
+    <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Log in</button>
+  </div>
+
+  <div *ngIf="loggedIn">
+    <router-outlet></router-outlet>
+  </div>
+
 </div>
