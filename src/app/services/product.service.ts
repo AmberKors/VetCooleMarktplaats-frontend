@@ -12,6 +12,9 @@ export class ProductService {
   private productList$ = new Subject<Product[]>();
   public product$ = new Subject<Product>();
 
+
+  message$ = new Subject<string>();
+
   constructor(private http: HttpClient) {
   }
 
@@ -32,7 +35,7 @@ export class ProductService {
     this.http.post(this.url, product).subscribe(() => this.getProducts())
   }
 
-  editContact(product: Product) {
+  editProduct(product: Product) {
     this.http.put(this.url + "/" + product.id, product).subscribe(() => this.getProducts());
   }
 

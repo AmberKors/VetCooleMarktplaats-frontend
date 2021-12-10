@@ -1,1 +1,60 @@
-<p>product-registration works!</p>
+<div class=register-container>
+  <div class=registrer-content>
+    <H3> Nieuw Product</H3></div>
+
+
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+      <form (submit)="addProduct()" novalidate #f="ngForm">
+        <div>
+          <div class="col-sm">
+            <label for="name">Naam:</label>
+          </div>
+          <div class="col-sm">
+            <input type="text" id="name" name="name" [(ngModel)]="newProduct.name" required>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-sm">
+            <label for="price">Prijs:</label>
+          </div>
+
+          <div class="col-sm">
+            <input type="text" id="price" name="price" [(ngModel)]="newProduct.price" required>
+          </div>
+        </div>
+
+
+        <div class="col-sm">
+          <label for="description">Omschrijving:</label>
+        </div>
+        <div class="col-sm">
+          <input type="text" id="description" name="username" [(ngModel)]="newProduct.description" required>
+        </div>
+
+        <div class="col-sm">
+          <label for="category">Categorie:</label>
+        </div>
+        <div class="col-sm">
+<!--          <input type="text" id="category" name="category" [(ngModel)]="newProduct.category" required>-->
+
+          <select id="category" name="category">
+            <option value='' disabled selected>Categorie</option>
+            <option *ngFor="let name of categoryOptions" [value]>{{category[name]}} </option>
+          </select>
+
+
+        </div>
+        <button [disabled]="f.invalid">Registreer</button>
+      </form>
+      <p>{{message$ | async}}</p>
+    </div>
+
+    <div class="col">
+    </div>
+  </div>
+
+</div>

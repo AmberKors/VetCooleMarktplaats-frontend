@@ -29,6 +29,7 @@ import {LogoutComponent} from "./login/logout.component";
     ProductDetailComponent,
     ShoppingCartComponent,
     CategoryPipe,
+
   ],
   imports: [
     BrowserModule,
