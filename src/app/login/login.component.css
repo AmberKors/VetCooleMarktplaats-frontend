@@ -1,22 +1,13 @@
-
-
-input.ng-valid {
-  border: solid greenyellow 1px !important;
-}
-input.ng-invalid {
-  border: solid orangered 1px;
-}
-
-.login-container{
+.login-container {
   background-color: grey;
 
   margin-left: 33%;
-  margin-right:33%;
+  margin-right: 33%;
   padding: 1rem 1rem 1rem 1rem;
   border-radius: 25px;
 }
 
-login-content{
-  padding-left:1rem;
+login-content {
+  padding-left: 1rem;
 }
 
