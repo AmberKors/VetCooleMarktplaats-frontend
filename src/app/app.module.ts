@@ -14,7 +14,7 @@ import {RouterModule} from "@angular/router";
 import {routes} from "./app.routes";
 import {LoginComponent} from './login/login.component';
 import {CategoryPipe} from './pipes/category.pipe';
-import {LogoutComponent} from "./login/logout.component";
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -22,14 +22,13 @@ import {LogoutComponent} from "./login/logout.component";
     AppComponent,
     HomePage,
     LoginComponent,
-    LogoutComponent,
     UserRegistrationComponent,
     ProductRegistrationComponent,
     ProductListComponent,
     ProductDetailComponent,
     ShoppingCartComponent,
     CategoryPipe,
-
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

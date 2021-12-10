@@ -8,8 +8,8 @@
     <div class="navbar-nav">
       <a class="nav-item nav-link active" routerLink="/">Home</a>
       <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/nieuwproduct">Nieuw Product</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/logout" routerLinkActive="activeMenu">Logout</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/shopping-cart/{{shoppingCartId}}">Winkelwagen</a>
+      <a *ngIf="loggedIn" class="nav-item nav-link" href="" (click)="logout()">Logout</a>
+      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/shopping-cart">Winkelwagen</a>
     </div>
   </div>
   <div class="user">{{loggedInMessage}}</div>
@@ -37,8 +37,8 @@
 </div>
 
 
-<div class = footer>
+<div class=footer>
 
-    (c) BD-IV 2021 Powered by M&A
+  (c) BD-IV 2021 Powered by M&A
 
 </div>
