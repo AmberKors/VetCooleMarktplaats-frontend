@@ -9,6 +9,7 @@ export class UserService {
 
   private uri = serverUrl + '/users';
   private user: User;
+  loggedInUser$ = new Subject<User>();
 
   createdUser = new Subject<string>();
 
@@ -18,20 +19,18 @@ export class UserService {
   }
 
   add(u: User): void {
-    console.log(u);
     this.http.post<User>(`${this.uri}`, u, {observe: 'response'})
       .subscribe(
+        data => {
+          this.createdUser.next(this.user.username);
+          this.message$.next(`Gebruiker ${this.user.username} is aangemaakt.`);
+        },
 
-    data => {
-      this.createdUser.next(this.user.username);
-      this.message$.next(`Gebruiker ${this.user.username} is aangemaakt.`);
-    },
-
-    error => {
-      console.log(error);
-      this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
-    }
-  );
+        error => {
+          console.log(error);
+          this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
+        }
+      );
   }
 
   // tslint:disable-next-line:typedef
@@ -42,5 +41,10 @@ export class UserService {
       return of(result as T);
     };
   }
-}
 
+  getUser(id: number) {
+    this.http.get<User>(this.uri + "/" + id).subscribe(user => {
+      this.loggedInUser$.next(user);
+    })
+  }
+}

@@ -20,14 +20,17 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-    this.id = this.activatedRoute.snapshot.url[1].path;
     this.shoppingCartService.productList$.subscribe(products => {
       this.products = products;
       this.calculateTotalPrice();
     });
-    this.shoppingCartService.getProductsFromShoppingCart(+this.id);
+
+    let recievedFromStorage = localStorage.getItem('loggedInUser');
+    if (recievedFromStorage != null) {
+      this.loggedInUser = JSON.parse(recievedFromStorage);
+      console.log(this.loggedInUser);
+      this.shoppingCartService.getProductsFromShoppingCart(+this.loggedInUser.shoppingCart.id);
+    }
   }
 
   calculateTotalPrice() {

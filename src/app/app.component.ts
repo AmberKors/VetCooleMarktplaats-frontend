@@ -13,13 +13,11 @@ export class AppComponent {
 
   loggedIn$ = this.loginService.loggedIn$;
   loggedOut$ = this.loginService.loggedOut$;
-  shoppingCartId$ = this.loginService.shoppingCartId$;
 
   loggedIn = false;
   logLabel = 'Login';
   logLink = 'login';
   loggedInMessage = 'Not logged in.';
-  shoppingCartId = "";
 
 
   constructor(private router: Router,
@@ -29,11 +27,6 @@ export class AppComponent {
       this.logLabel = 'Logout';
       this.logLink = 'logout';
       this.loggedInMessage = `Logged in as ${userName}.`;
-    });
-
-    this.shoppingCartId$.subscribe((cartId) => {
-      console.log(cartId);
-      this.shoppingCartId = cartId;
     });
 
     this.loggedOut$.subscribe((userName) => {
@@ -58,6 +51,6 @@ export class AppComponent {
 
   logout(): void {
     this.loginService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }
