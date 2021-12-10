@@ -1,3 +1,21 @@
 .navbar-brand {
   margin-left: 0.5em;
+
+}
+
+.container {
+  background-color: rgba(252, 0, 0, 0);
+
+}
+
+.footer-context {
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  align-self: center;
+width: 100%;
+  text-align: center;
 }

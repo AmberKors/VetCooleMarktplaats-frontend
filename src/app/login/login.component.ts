@@ -5,14 +5,14 @@ import {LoginService} from "../services/login.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  styleUrls:['./login.component.css'],
 })
 export class LoginComponent {
 
   user = {} as User;
   message$ = this.service.message$;
 
-  constructor(private service: LoginService) {
-  }
+  constructor(private service: LoginService) {}
 
   login(): void {
     console.log(this.user)

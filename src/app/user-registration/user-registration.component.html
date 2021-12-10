@@ -1,26 +1,45 @@
 
-<H1> Welkom onbekende, registreer jezelf voordat je gebruik maakt van de Marktplaats</H1>
+<div class = register-container>
+  <div class = registrer-content>
+<H3> Nieuwe gebruiker</H3></div>
 
-<form (submit)="addContact()" novalidate #f="ngForm">
-  <div>
-    <label for="firstName">First name:</label>
-    <input type="text" id="firstName" name="firstName" [(ngModel)]="newUser.firstName" required>
+
+<div class="row">
+  <div class="col">
   </div>
-  <div>
-    <label for="surname">Surname:</label>
-    <input type="text" id="surname" name="surname" [(ngModel)]="newUser.lastName" required>
+  <div class="col">
+    <form (submit)="addContact()" novalidate #f="ngForm">
+        <div>
+          <div class="col-sm">
+          <label for="firstName">Voornaam:</label>
+          </div>
+          <div class="col-sm">
+          <input type="text" id="firstName" name="firstName" [(ngModel)]="newUser.firstName" required>
+          </div>
+        </div>
+        <div>
+          <label for="surname">Achternaam:</label>
+          <input type="text" id="surname" name="surname" [(ngModel)]="newUser.lastName" required>
+        </div>
+        <div>
+          <label for="email">E-mail:</label>
+          <input type="text" id="email" name="email" [(ngModel)]="newUser.email" required>
+        </div>
+        <div>
+          <label for="username">Gebruikersnaam:</label>
+          <input type="text" id="username" name="username" [(ngModel)]="newUser.username" required>
+        </div>
+        <div>
+          <label for="password">Wachtwoord:</label>
+          <input type="text" id="password" name="password" [(ngModel)]="newUser.password" required>
+          <button [disabled]="f.invalid">Registreer</button>
+        </div>
+    </form>
+    <p>{{message$ | async}}</p>
   </div>
-  <div>
-    <label for="email">E-mail address:</label>
-    <input type="text" id="email" name="email" [(ngModel)]="newUser.email" required>
+
+  <div class="col">
   </div>
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" [(ngModel)]="newUser.username" required>
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password" [(ngModel)]="newUser.password" required>
-    <button [disabled]="f.invalid">Registreer</button>
-  </div>
-</form>
+</div>
+
+</div>

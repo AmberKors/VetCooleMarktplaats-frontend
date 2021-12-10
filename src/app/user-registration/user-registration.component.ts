@@ -10,12 +10,15 @@ import {UserService} from "../services/user.service";
 export class UserRegistrationComponent {
 
   newUser = {} as User;
+  message$ = this.service.message$;
 
   constructor(private service: UserService) { }
 
   addContact(): void {
+    console.log(this.newUser);
     this.service.add(this.newUser);
     this.newUser = {} as User;
+
   }
 
 }
