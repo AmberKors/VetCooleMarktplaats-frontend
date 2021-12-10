@@ -10,25 +10,32 @@ import {LoginService} from "./services/login.service";
 export class AppComponent {
   title = 'Vet Coole Marktplaats';
 
-  loggedIn$ = this.service.loggedIn$;
-  loggedOut$ = this.service.loggedOut$;
+  loggedIn$ = this.loginService.loggedIn$;
+  loggedOut$ = this.loginService.loggedOut$;
+  shoppingCartId$ = this.loginService.shoppingCartId$;
 
   loggedIn = false;
   logLabel = 'Login';
   logLink = 'login';
   loggedInMessage = 'Not logged in.';
+  shoppingCartId = "";
 
 
   constructor(private router: Router,
-              private service: LoginService) {
-    this.loggedIn$.subscribe((u) => {
+              private loginService: LoginService) {
+    this.loggedIn$.subscribe((userName) => {
       this.loggedIn = true;
       this.logLabel = 'Logout';
       this.logLink = 'logout';
-      this.loggedInMessage = `Logged in as ${u}.`;
+      this.loggedInMessage = `Logged in as ${userName}.`;
     });
 
-    this.loggedOut$.subscribe((u) => {
+    this.shoppingCartId$.subscribe((cartId) => {
+      console.log(cartId);
+      this.shoppingCartId = cartId;
+    });
+
+    this.loggedOut$.subscribe((userName) => {
       this.loggedIn = false;
       this.logLabel = 'Login';
       this.logLink = 'login';
@@ -41,7 +48,7 @@ export class AppComponent {
   }
 
   logout(): void {
-    this.service.logout();
+    this.loginService.logout();
     this.router.navigate(['/login']);
   }
 }
