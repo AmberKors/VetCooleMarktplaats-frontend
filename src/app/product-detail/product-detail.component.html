@@ -54,14 +54,14 @@
     </button>
   </div>
   <div class="col-2" *ngIf="product != undefined && !product.shoppingCart">
-    <button type="button" class="btn btn-primary" (click)="addToShoppingCart(product)">
+    <button type="button" class="btn btn-success" (click)="addToShoppingCart(product)">
       Voeg toe <i class="fas fa-shopping-cart"></i>
     </button>
   </div>
 
-  <div class="col-2" *ngIf="product != undefined && product.shoppingCart">
-    <button type="button" class="btn btn-primary" (click)="deleteFromShoppingCart(product)">
-      Verwijder uit winkelmandje <i class="fas fa-ban"></i>
+  <div class="col" *ngIf="product != undefined && product.shoppingCart">
+    <button type="button" class="btn btn-danger" (click)="deleteFromShoppingCart(product)">
+      Verwijder <i class="fas fa-shopping-cart"></i>
     </button>
   </div>
 </div>
