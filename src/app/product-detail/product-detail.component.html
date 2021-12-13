@@ -53,9 +53,15 @@
       <i class="fas fa-angle-left"></i> Terug
     </button>
   </div>
-  <div class="col-2" *ngIf="product != undefined">
-    <button type="button" class="btn btn-primary">
+  <div class="col-2" *ngIf="product != undefined && !product.shoppingCart">
+    <button type="button" class="btn btn-primary" (click)="addToShoppingCart(product)">
       Voeg toe <i class="fas fa-shopping-cart"></i>
+    </button>
+  </div>
+
+  <div class="col-2" *ngIf="product != undefined && product.shoppingCart">
+    <button type="button" class="btn btn-primary" (click)="deleteFromShoppingCart(product)">
+      Verwijder uit winkelmandje <i class="fas fa-ban"></i>
     </button>
   </div>
 </div>

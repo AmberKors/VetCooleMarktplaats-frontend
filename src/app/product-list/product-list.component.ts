@@ -19,4 +19,19 @@ export class ProductListComponent implements OnInit {
       this.products = products;
     })
   }
+
+  addToShoppingCart(product: Product) {
+    let recievedFromStorage = localStorage.getItem('loggedInUser');
+    if (recievedFromStorage != null) {
+      let loggedInUser = JSON.parse(recievedFromStorage);
+
+      if (!product.shoppingCart) {
+        product.shoppingCart = loggedInUser.shoppingCart;
+        this.productService.editProduct(product);
+        console.log("Product is toegevoegd!");
+      } else {
+        console.log("Product zit al in winkelmandje");
+      }
+    }
+  }
 }

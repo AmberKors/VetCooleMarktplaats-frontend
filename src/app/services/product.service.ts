@@ -9,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProductService {
   private url = serverUrl + '/products'
-  private productList$ = new Subject<Product[]>();
+  public productList$ = new Subject<Product[]>();
   public product$ = new Subject<Product>();
 
 

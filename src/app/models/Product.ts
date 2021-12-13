@@ -1,4 +1,5 @@
 import {Category} from "./Category";
+import {ShoppingCart} from "./ShoppingCart";
 
 export interface Product {
   id: number;
@@ -8,4 +9,5 @@ export interface Product {
   description: string;
   datePublished: Date;
   user: number;
+  shoppingCart: ShoppingCart;
 }

@@ -27,7 +27,8 @@
       <div class="icon-btn"><i class="fas fa-info-circle" routerLink="/products/{{product.id}}"></i></div>
     </td>
     <td>
-      <div class="icon-btn"><i class="fas fa-shopping-cart"></i></div>
+      <div *ngIf="!product.shoppingCart" class="icon-btn" (click)="addToShoppingCart(product)"><i
+        class="fas fa-shopping-cart"></i></div>
     </td>
   </tr>
   </tbody>
