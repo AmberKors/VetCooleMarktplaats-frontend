@@ -14,8 +14,6 @@ export class SneakPeekComponent implements OnInit {
   productList: Product[] = [];
   productsToShow: Product[] = [];
 
-  // product: Product;
-
   constructor(private productService: ProductService) {
     let recievedFromStorage = localStorage.getItem('loggedInUser');
     if (recievedFromStorage != null) {
