@@ -21,6 +21,7 @@ import {ToastrModule} from "ngx-toastr";
 import {DeliveryPipe} from "./pipes/delivery.pipe";
 import {EditProductComponent} from './edit-product/edit-product.component';
 import {DetailPage} from "./pages/detail.page";
+import {SneakPeekComponent} from "./sneak-peek/sneak-peek.component";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {DetailPage} from "./pages/detail.page";
     CategoryPipe,
     FilterPipe,
     DeliveryPipe,
-    EditProductComponent
+    EditProductComponent,
+    SneakPeekComponent
   ],
   imports: [
     BrowserModule,
