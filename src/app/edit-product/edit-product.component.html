@@ -1,0 +1,90 @@
+<table class="table" *ngIf="product != undefined">
+  <tbody>
+  <tr>
+    <th>
+      Naam:
+    </th>
+    <td>
+      <div *ngIf="!editing">      {{product.name}}</div>
+      <div *ngIf="editing">
+        <input type="text" [(ngModel)]="product.name" required>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Sinds:
+    </th>
+    <td>
+      {{product.datePublished | date:'shortDate'}}
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Categorie:
+    </th>
+    <td>
+      <div *ngIf="!editing">{{product.category | category}}</div>
+      <div *ngIf="editing">
+        <select id="category" name="category" [(ngModel)]="product.category" required>
+          <option *ngFor="let category of categoryOptions" value="{{category}}">{{category | category}} </option>
+        </select>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Prijs:
+    </th>
+    <td>
+      <div *ngIf="!editing">      {{product.price | currency:'EUR'}}</div>
+      <div *ngIf="editing">
+        <input type="number" id="price" name="price" min="0.00" step='0.01' lang="en" [(ngModel)]="product.price"
+               required>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Omschrijving:
+    </th>
+    <td>
+      <div *ngIf="!editing">{{product.description}}</div>
+      <div *ngIf="editing">
+        <textarea id="description" name="username" maxlength="200" [(ngModel)]="product.description"
+                  required></textarea>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="product == undefined">
+  Ohjee, dit product lijkt niet te bestaan.
+</div>
+
+<div class="row">
+  <div class="col-1">
+    <button type="button" class="btn btn-primary" (click)="back()">
+      <i class="fas fa-angle-left"></i> Terug
+    </button>
+  </div>
+
+  <div class="col-1" *ngIf="!editing && product != undefined">
+    <button type="button" class="btn btn-primary" (click)="editProduct()">
+      <i class="fas fa-pen"></i> edit
+    </button>
+  </div>
+  <div class="col-1" *ngIf="editing && product != undefined">
+    <button type="button" class="btn btn-success" (click)="editProduct(); saveProduct()">
+      save
+    </button>
+  </div>
+  <div class="col" *ngIf="product != undefined">
+    <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">
+      Verwijder
+    </button>
+  </div>
+
+</div>
+

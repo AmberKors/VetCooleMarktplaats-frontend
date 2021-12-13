@@ -19,12 +19,15 @@ import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
 import {DeliveryPipe} from "./pipes/delivery.pipe";
+import {EditProductComponent} from './edit-product/edit-product.component';
+import {DetailPage} from "./pages/detail.page";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePage,
+    DetailPage,
     LoginComponent,
     UserRegistrationComponent,
     ProductRegistrationComponent,
@@ -33,7 +36,8 @@ import {DeliveryPipe} from "./pipes/delivery.pipe";
     ShoppingCartComponent,
     CategoryPipe,
     FilterPipe,
-    DeliveryPipe
+    DeliveryPipe,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

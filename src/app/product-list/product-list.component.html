@@ -24,11 +24,28 @@
       {{product.price | currency:'EUR'}}
     </td>
     <td>
-      <div class="icon-btn"><i class="fas fa-info-circle" routerLink="/products/{{product.id}}"></i></div>
+      <div class="icon-btn" *ngIf="product.user.username != loggedInUser.username">
+        <i class="fas fa-info-circle" routerLink="/products/{{product.id}}"></i>
+      </div>
+      <div class="icon-btn" *ngIf="product.user.username == loggedInUser.username">
+        <i class="fas fa-pen" routerLink="/products/{{product.id}}"></i>
+      </div>
     </td>
     <td>
-      <div *ngIf="!product.shoppingCart" class="icon-btn" (click)="addToShoppingCart(product)"><i
-        class="fas fa-shopping-cart"></i></div>
+      <!--      <div *ngIf="!product.shoppingCart" class="icon-btn" (click)="addToShoppingCart(product)"> Voeg toe <i-->
+      <!--        class="fas fa-shopping-cart"></i></div>-->
+      <div *ngIf="product.user.username != loggedInUser.username">
+        <button *ngIf="!product.shoppingCart" type="button" class="btn btn-success"
+                (click)="addToShoppingCart(product)">
+          Voeg toe <i class="fas fa-shopping-cart"></i>
+        </button>
+        <button *ngIf="product.shoppingCart" type="button" class="btn btn-danger"
+                (click)="deleteFromShoppingCart(product)">
+          Verwijder <i class="fas fa-shopping-cart"></i>
+        </button>
+      </div>
+
+
     </td>
   </tr>
   </tbody>

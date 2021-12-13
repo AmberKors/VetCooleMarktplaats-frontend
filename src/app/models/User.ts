@@ -2,6 +2,7 @@ import {ShoppingCart} from "./ShoppingCart";
 import {Delivery} from "./Delivery";
 
 export interface User {
+  id: number;
   username: string;
   password: string;
   firstName: string;
