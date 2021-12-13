@@ -11,7 +11,7 @@ export class UserService {
   private user: User;
   loggedInUser$ = new Subject<User>();
 
-  createdUser = new Subject<string>();
+  createdUser$ = new Subject<string>();
 
   message$ = new Subject<string>();
 
@@ -21,9 +21,11 @@ export class UserService {
   add(u: User): void {
     this.http.post<User>(`${this.uri}`, u, {observe: 'response'})
       .subscribe(
-        data => {
-          this.createdUser.next(this.user.username);
-          this.message$.next(`Gebruiker ${this.user.username} is aangemaakt.`);
+        response => {
+          // @ts-ignore
+          this.createdUser$.next(response.body.username);
+          // @ts-ignore
+          this.message$.next(`Gebruiker ${response.body.username} is aangemaakt.`);
         },
 
         error => {

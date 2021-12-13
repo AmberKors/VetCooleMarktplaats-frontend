@@ -36,20 +36,22 @@
           </select>
         </div>
 
-        <div class="col-sm" *ngIf="newUser.delivery==delivery.AFHALEN">
-          <label for="adres">Straat:</label>
-          <input type="adres" id="adres" name="adres" [(ngModel)]="newUser.street"  required>
-        </div>
+        <ng-container *ngIf="afhalenSelected()">
+          <div class="col-sm" >
+            <label for="adres">Straat:</label>
+            <input type="adres" id="adres" name="adres" [(ngModel)]="newUser.street" required>
+          </div>
 
-        <div class="col-sm" *ngIf="newUser.delivery==delivery.AFHALEN">
-          <label for="postalcode">Postcode:</label>
-          <input type="postalcode" id="postalcode" name="postalcode" [(ngModel)]="newUser.postalcode" required>
-        </div>
+          <div class="col-sm">
+            <label for="postalcode">Postcode:</label>
+            <input type="postalcode" id="postalcode" name="postalcode" [(ngModel)]="newUser.postalcode" required>
+          </div>
 
-        <div class="col-sm" *ngIf="newUser.delivery==delivery.AFHALEN">
-          <label for="housenumber">Huisnummer:</label>
-          <input type="housenumber" id="housenumber" name="housenumber" [(ngModel)]="newUser.housenumber" required>
-        </div>
+          <div class="col-sm">
+            <label for="housenumber">Huisnummer:</label>
+            <input type="housenumber" id="housenumber" name="housenumber" [(ngModel)]="newUser.housenumber" required>
+          </div>
+        </ng-container>
 
         <div class="col-sm">
           <label for="username">Gebruikersnaam:</label>
