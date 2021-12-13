@@ -14,31 +14,35 @@ import {RouterModule} from "@angular/router";
 import {routes} from "./app.routes";
 import {LoginComponent} from './login/login.component';
 import {CategoryPipe} from './pipes/category.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
+import {FilterPipe } from './pipes/filter.pipe';
+import {DeliveryPipe} from "./pipes/delivery.pipe";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePage,
-    LoginComponent,
-    UserRegistrationComponent,
-    ProductRegistrationComponent,
-    ProductListComponent,
-    ProductDetailComponent,
-    ShoppingCartComponent,
-    CategoryPipe,
-    FilterPipe,
-  ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot(routes),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomePage,
+        LoginComponent,
+        UserRegistrationComponent,
+        ProductRegistrationComponent,
+        ProductListComponent,
+        ProductDetailComponent,
+        ShoppingCartComponent,
+        CategoryPipe,
+        FilterPipe,
+        DeliveryPipe
+    ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
+    ],
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

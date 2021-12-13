@@ -10,7 +10,6 @@ import {Category} from "../models/Category";
 })
 export class ProductRegistrationComponent {
 
-
   newProduct = {} as Product;
   message$ = this.service.message$;
   category = Category;
@@ -33,6 +32,8 @@ export class ProductRegistrationComponent {
     this.newProduct = {} as Product;
 
   }
+
+
 
 
 }

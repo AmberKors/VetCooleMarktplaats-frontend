@@ -1,45 +1,73 @@
+<div class=register-container>
+  <div class=registrer-content>
+    <H3> Nieuwe gebruiker</H3></div>
 
-<div class = register-container>
-  <div class = registrer-content>
-<H3> Nieuwe gebruiker</H3></div>
 
-
-<div class="row">
-  <div class="col">
-  </div>
-  <div class="col">
-    <form (submit)="addContact()" novalidate #f="ngForm">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+      <form (submit)="addContact()" novalidate #f="ngForm">
         <div>
           <div class="col-sm">
-          <label for="firstName">Voornaam:</label>
+            <label for="firstName">Voornaam:</label>
           </div>
           <div class="col-sm">
-          <input type="text" id="firstName" name="firstName" [(ngModel)]="newUser.firstName" required>
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="newUser.firstName" minlength=" 4" required>
           </div>
         </div>
-        <div>
+
+        <div class="col-sm">
           <label for="surname">Achternaam:</label>
-          <input type="text" id="surname" name="surname" [(ngModel)]="newUser.lastName" required>
+          <input type="text" id="surname" name="surname" [(ngModel)]="newUser.lastName" minlength="4" required>
         </div>
-        <div>
+
+        <div class="col-sm">
           <label for="email">E-mail:</label>
-          <input type="text" id="email" name="email" [(ngModel)]="newUser.email" required>
+          <input type="email" id="email" name="email" [(ngModel)]="newUser.email" [email]="true" required>
         </div>
-        <div>
+
+        <div class="col-sm">
+          <label for="delivery">Verzendmethode:</label>
+        </div>
+        <div class="col-sm">
+          <select id="delivery" name="delivery" [(ngModel)]="newUser.delivery" required>
+            <option *ngFor="let delivery of deliveryOptions" value="{{delivery}}">{{delivery | delivery}} </option>
+          </select>
+        </div>
+
+        <div class="col-sm" *ngIf="newUser.delivery==delivery.AFHALEN">
+          <label for="adres">Straat:</label>
+          <input type="adres" id="adres" name="adres" [(ngModel)]="newUser.street"  required>
+        </div>
+
+        <div class="col-sm" *ngIf="newUser.delivery==delivery.AFHALEN">
+          <label for="postalcode">Postcode:</label>
+          <input type="postalcode" id="postalcode" name="postalcode" [(ngModel)]="newUser.postalcode" required>
+        </div>
+
+        <div class="col-sm" *ngIf="newUser.delivery==delivery.AFHALEN">
+          <label for="housenumber">Huisnummer:</label>
+          <input type="housenumber" id="housenumber" name="housenumber" [(ngModel)]="newUser.housenumber" required>
+        </div>
+
+        <div class="col-sm">
           <label for="username">Gebruikersnaam:</label>
-          <input type="text" id="username" name="username" [(ngModel)]="newUser.username" required>
+          <input type="text" id="username" name="username" minlength="6" [(ngModel)]="newUser.username" required>
         </div>
-        <div>
+
+        <div class="col-sm">
           <label for="password">Wachtwoord:</label>
-          <input type="text" id="password" name="password" [(ngModel)]="newUser.password" required>
+          <input type="text" id="password" name="password" minlength="6" [(ngModel)]="newUser.password" required>
           <button [disabled]="f.invalid">Registreer</button>
         </div>
-    </form>
-    <p>{{message$ | async}}</p>
-  </div>
 
-  <div class="col">
+      </form>
+      <p>{{message$ | async}}</p>
+    </div>
+
+    <div class="col">
+    </div>
   </div>
-</div>
 
 </div>

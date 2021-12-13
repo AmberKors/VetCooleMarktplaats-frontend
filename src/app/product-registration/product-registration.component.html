@@ -13,38 +13,38 @@
             <label for="name">Naam:</label>
           </div>
           <div class="col-sm">
-            <input type="text" id="name" name="name" [(ngModel)]="newProduct.name" required>
+            <input type="text" id="name" name="name" [(ngModel)]="newProduct.name" pattern="[a-zA-Z ]*" required>
           </div>
         </div>
 
         <div>
-          <div class="col-sm">
-            <label for="price">Prijs:</label>
+          <div class="col-sm"><label for="price">Prijs:</label>
           </div>
 
           <div class="col-sm">
             <input type="number" id="price" name="price" min="0.00" step='0.01' lang="en" [(ngModel)]="newProduct.price"
-                   required>
+                 required >
           </div>
         </div>
 
 
-        <div class="col-sm">
-          <label for="description">Omschrijving:</label>
-        </div>
-        <div class="col-sm">
-          <input type="text" id="description" name="username" [(ngModel)]="newProduct.description" required>
-        </div>
+        <div class=" col-sm">
+            <label for="description">Omschrijving:</label>
+          </div>
+          <div class="col-sm">
+            <textarea id="description" name="username" maxlength="200" [(ngModel)]="newProduct.description"
+                      required></textarea>
+          </div>
 
-        <div class="col-sm">
-          <label for="category">Categorie:</label>
-        </div>
-        <div class="col-sm">
-          <select id="category" name="category" [(ngModel)]="newProduct.category" required>
-            <option *ngFor="let category of categoryOptions" value="{{category}}">{{category | category}} </option>
-          </select>
-        </div>
-        <button [disabled]="f.invalid">Registreer</button>
+          <div class="col-sm">
+            <label for="category">Categorie:</label>
+          </div>
+          <div class="col-sm">
+            <select id="category" name="category" [(ngModel)]="newProduct.category" required>
+              <option *ngFor="let category of categoryOptions" value="{{category}}">{{category | category}} </option>
+            </select>
+          </div>
+          <button [disabled]="f.invalid">Registreer</button>
       </form>
       <p>{{message$ | async}}</p>
     </div>
