@@ -19,7 +19,6 @@ export class SneakPeekComponent implements OnInit {
     if (recievedFromStorage != null) {
       this.loggedInUser = JSON.parse(recievedFromStorage);
     }
-
   }
 
 
