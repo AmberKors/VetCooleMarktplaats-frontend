@@ -12,7 +12,9 @@ export class SneakPeekComponent implements OnInit {
 
   loggedInUser: User;
   productList: Product[] = [];
-  product: Product;
+  productsToShow: Product[] = [];
+
+  // product: Product;
 
   constructor(private productService: ProductService) {
     let recievedFromStorage = localStorage.getItem('loggedInUser');
@@ -25,15 +27,21 @@ export class SneakPeekComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {
-      console.log(products);
       products.forEach(product => {
-        console.log(product);
-        if (product.user !== this.loggedInUser) {
+        if (product.user.id != this.loggedInUser.id) {
           this.productList.push(product)
         }
-
       })
-      this.product = this.productList[Math.floor(Math.random() * this.productList.length)];
+
+      while (this.productsToShow.length < 4) {
+
+        let product: Product = this.productList[Math.floor(Math.random() * this.productList.length)];
+        if (!this.productsToShow.includes(product)) {
+          this.productsToShow.push(product);
+          console.log(product.id);
+        }
+      }
+
     })
 
   }
