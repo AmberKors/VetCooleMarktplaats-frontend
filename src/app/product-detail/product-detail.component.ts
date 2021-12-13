@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Product} from "../models/Product";
 import {ProductService} from "../services/product.service";
 import {Location} from '@angular/common'
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,10 @@ export class ProductDetailComponent implements OnInit {
   id: string = "";
   product: Product;
 
-  constructor(private activatedRoute: ActivatedRoute, private productService: ProductService, private location: Location) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private productService: ProductService,
+              private location: Location,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -30,9 +34,7 @@ export class ProductDetailComponent implements OnInit {
       if (!product.shoppingCart) {
         product.shoppingCart = loggedInUser.shoppingCart;
         this.productService.editProduct(product);
-        console.log("Product is toegevoegd!");
-      } else {
-        console.log("Product zit al in winkelmandje");
+        this.showSuccess("Product is toegevoegd aan de winkelwagen!");
       }
     }
   }
@@ -41,6 +43,11 @@ export class ProductDetailComponent implements OnInit {
     // @ts-ignore
     product.shoppingCart = null;
     this.productService.editProduct(product);
+    this.showSuccess("Product is verwijderd uit de winkelwagen");
+  }
+
+  showSuccess(message: string) {
+    this.toastr.success(message);
   }
 
   back(): void {

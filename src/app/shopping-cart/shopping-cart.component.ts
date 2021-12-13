@@ -5,6 +5,7 @@ import {ShoppingCartService} from "../services/shopping-cart.service";
 import {Location} from "@angular/common";
 import {User} from "../models/User";
 import {ProductService} from "../services/product.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,7 +18,11 @@ export class ShoppingCartComponent implements OnInit {
   totalPrice: number = 0;
   loggedInUser: User;
 
-  constructor(private activatedRoute: ActivatedRoute, private shoppingCartService: ShoppingCartService, private location: Location, private productService: ProductService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private shoppingCartService: ShoppingCartService,
+              private location: Location,
+              private productService: ProductService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -50,6 +55,11 @@ export class ShoppingCartComponent implements OnInit {
     // @ts-ignore
     product.shoppingCart = null;
     this.productService.editProduct(product);
+    this.showSuccess("Product is verwijderd uit de winkelwagen");
+  }
+
+  showSuccess(message: string) {
+    this.toastr.success(message);
   }
 
   back(): void {

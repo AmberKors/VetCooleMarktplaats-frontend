@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from "../models/Product";
 import {ProductService} from "../services/product.service";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +12,8 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   searchText: string;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -28,10 +30,12 @@ export class ProductListComponent implements OnInit {
       if (!product.shoppingCart) {
         product.shoppingCart = loggedInUser.shoppingCart;
         this.productService.editProduct(product);
-        console.log("Product is toegevoegd!");
-      } else {
-        console.log("Product zit al in winkelmandje");
+        this.showSuccess();
       }
     }
+  }
+
+  showSuccess() {
+    this.toastr.success("Product is toegevoegd aan de winkelwagen!");
   }
 }
