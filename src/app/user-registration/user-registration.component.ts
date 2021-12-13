@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {User} from "../models/User";
 import {UserService} from "../services/user.service";
 import {Delivery} from "../models/Delivery";
-import {ProductService} from "../services/product.service";
 
 @Component({
   selector: 'app-user-registration',
-  templateUrl: './user-registration.component.html',
+  templateUrl:
+    './user-registration.component.html',
   styleUrls: ['./user-registration.component.css']
 })
 export class UserRegistrationComponent {
@@ -14,10 +14,11 @@ export class UserRegistrationComponent {
   newUser = {} as User;
   message$ = this.service.message$;
   delivery = Delivery;
-  deliveryOptions =[];
+  deliveryOptions = [];
 
   constructor(private service: UserService) {     // @ts-ignore
-      this.deliveryOptions=Object.keys(this.delivery);}
+    this.deliveryOptions = Object.keys(this.delivery);
+  }
 
 
   addContact(): void {
@@ -27,4 +28,13 @@ export class UserRegistrationComponent {
 
   }
 
+  afhalenSelected() {
+    // console.log("this.newUser.delivery: " + this.newUser.delivery);
+    // console.log("this.delivery.AFHALEN:" + this.delivery.AFHALEN);
+    if (this.newUser.delivery !== undefined) {// ! = =
+      return (this.newUser.delivery.valueOf() == "AFHALEN");
+    } else {
+      return false;
+    }
+  }
 }
