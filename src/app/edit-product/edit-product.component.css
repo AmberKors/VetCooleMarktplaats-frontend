@@ -1,0 +1,3 @@
+.btn-danger:hover{
+  animation: pulse-red 2s infinite;
+}

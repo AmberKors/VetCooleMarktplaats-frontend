@@ -13,4 +13,5 @@ export interface User {
   email: string;
   delivery: Delivery;
   shoppingCart: ShoppingCart;
+  legalRequired: boolean;
 }

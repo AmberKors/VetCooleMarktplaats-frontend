@@ -37,4 +37,7 @@ export class UserRegistrationComponent {
       return false;
     }
   }
+  log(){
+    console.log(this.newUser.legalRequired);
+  }
 }

@@ -3,19 +3,22 @@ import {Injectable} from '@angular/core';
 import {serverUrl} from '../../environments/environment';
 import {User} from '../models/User';
 import {Observable, of, Subject} from "rxjs";
+import {LoginService} from "./login.service";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({providedIn: 'root'})
 export class UserService {
 
   private uri = serverUrl + '/users';
   private user: User;
+
   loggedInUser$ = new Subject<User>();
 
   createdUser$ = new Subject<string>();
 
   message$ = new Subject<string>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private loginService: LoginService, private toasty : ToastrService) {
   }
 
   add(u: User): void {
@@ -25,7 +28,8 @@ export class UserService {
           // @ts-ignore
           this.createdUser$.next(response.body.username);
           // @ts-ignore
-          this.message$.next(`Gebruiker ${response.body.username} is aangemaakt.`);
+          this.toasty.success(`Gebruiker ${response.body.username} is aangemaakt.`);
+          this.loginService.login(u);
         },
 
         error => {
