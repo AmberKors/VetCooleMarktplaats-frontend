@@ -29,15 +29,18 @@ export class SneakPeekComponent implements OnInit {
           this.productList.push(product)
         }
       })
-
-      while (this.productsToShow.length < 4) {
-
-        let product: Product = this.productList[Math.floor(Math.random() * this.productList.length)];
-        if (!this.productsToShow.includes(product)) {
-          this.productsToShow.push(product);
-          console.log(product.id);
+      if (this.productList.length >= 4) {
+        while (this.productsToShow.length < 4) {
+          let product: Product = this.productList[Math.floor(Math.random() * this.productList.length)];
+          if (!this.productsToShow.includes(product)) {
+            this.productsToShow.push(product);
+            console.log(product.id);
+          }
         }
+      } else {
+        this.productsToShow = this.productList;
       }
+
 
     })
 

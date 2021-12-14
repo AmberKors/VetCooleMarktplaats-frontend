@@ -7,9 +7,11 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" routerLink="/">Home</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/nieuwproduct">Nieuw Product</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" (click)="logout()">Logout</a>
+      <!--      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/nieuwproduct">Nieuw Product</a>-->
+      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/products">Producten</a>
+      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/mijn-marktplaats">Mijn-Marktplaats</a>
       <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/shopping-cart">Winkelwagen</a>
+      <a *ngIf="loggedIn" class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
   </div>
   <div class="user">{{loggedInMessage}}</div>

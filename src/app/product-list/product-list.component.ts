@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../models/Product";
 import {ProductService} from "../services/product.service";
 import {ToastrService} from 'ngx-toastr';
@@ -10,6 +10,9 @@ import {User} from "../models/User";
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  @Input()
+  privateItems: boolean;
+
   products: Product[] = [];
   searchText: string;
   loggedInUser: User;
@@ -20,7 +23,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getProducts().subscribe(products => {
-      this.products = products;
+      this.products = [];
+      this.checkForPrivateItems(products);
+      this.checkIfAlreadyInShoppingCart();
     })
 
     let recievedFromStorage = localStorage.getItem('loggedInUser');
@@ -30,9 +35,29 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  addToShoppingCart(product: Product) {
-    let recievedFromStorage = localStorage.getItem('loggedInUser');
+  checkIfAlreadyInShoppingCart() {
+    this.products.forEach(product => {
+      if (product.shoppingCart && product.shoppingCart.id != this.loggedInUser.shoppingCart.id) {
+        this.products.splice(this.products.indexOf(product), 1);
+      }
+    })
+  }
 
+  checkForPrivateItems(products: Product[]) {
+    products.forEach(product => {
+      if (this.privateItems == true) {
+        if (product.user.id == this.loggedInUser.id) {
+          this.products.push(product);
+        }
+      } else {
+        if (product.user.id != this.loggedInUser.id) {
+          this.products.push(product);
+        }
+      }
+    })
+  }
+
+  addToShoppingCart(product: Product) {
     if (!product.shoppingCart) {
       product.shoppingCart = this.loggedInUser.shoppingCart;
       this.productService.editProduct(product);
@@ -44,10 +69,14 @@ export class ProductListComponent implements OnInit {
     // @ts-ignore
     product.shoppingCart = null;
     this.productService.editProduct(product);
-    this.showSuccess("Product is verwijderd uit de winkelwagen");
+    this.showError("Product is verwijderd uit de winkelwagen");
   }
 
   showSuccess(message: string) {
     this.toastr.success(message);
+  }
+
+  showError(message: string) {
+    this.toastr.error(message);
   }
 }

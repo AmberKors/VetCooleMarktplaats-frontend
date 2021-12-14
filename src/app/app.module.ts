@@ -22,6 +22,7 @@ import {DeliveryPipe} from "./pipes/delivery.pipe";
 import {EditProductComponent} from './edit-product/edit-product.component';
 import {DetailPage} from "./pages/detail.page";
 import {SneakPeekComponent} from "./sneak-peek/sneak-peek.component";
+import { MijnMarktplaatsComponent } from './mijn-marktplaats/mijn-marktplaats.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {SneakPeekComponent} from "./sneak-peek/sneak-peek.component";
     FilterPipe,
     DeliveryPipe,
     EditProductComponent,
-    SneakPeekComponent
+    SneakPeekComponent,
+    MijnMarktplaatsComponent
   ],
   imports: [
     BrowserModule,

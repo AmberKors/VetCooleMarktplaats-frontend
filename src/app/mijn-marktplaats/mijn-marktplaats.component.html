@@ -1,0 +1,14 @@
+<div class="container">
+  <button *ngIf="!addProduct" type="button" class="btn btn-primary" (click)="registerProduct()">Product toevoegen
+  </button>
+  <button *ngIf="addProduct" type="button" class="btn btn-primary" (click)="registerProduct()">Verbergen</button>
+  <app-product-registration *ngIf="addProduct"></app-product-registration>
+</div>
+
+
+<div class="container">
+  <h3>Mijn producten</h3>
+  <app-product-list [privateItems]="true"></app-product-list>
+</div>
+
+
