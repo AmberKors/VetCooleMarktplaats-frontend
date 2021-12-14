@@ -7,3 +7,14 @@
 .btn {
   margin-top: 1rem;
 }
+
+.voorwaarden-container {
+  border: solid black 1px;
+  border-radius: 5px;
+  height: 10rem;
+  overflow: auto;
+}
+
+#LegalRequired {
+  width: 2rem;
+}

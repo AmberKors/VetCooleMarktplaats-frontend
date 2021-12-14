@@ -43,7 +43,7 @@ import {PaymentPage} from "./pages/payment.page";
     DeliveryPipe,
     EditProductComponent,
     SneakPeekComponent,
-    MijnMarktplaatsComponent
+    MijnMarktplaatsComponent,
   ],
   imports: [
     BrowserModule,

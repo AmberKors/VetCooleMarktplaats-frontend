@@ -14,5 +14,5 @@ export const routes: Route[] = [
   {path: 'products/:id', component: DetailPage},
   {path: 'nieuw-product', component: ProductRegistrationComponent},
   {path: 'mijn-marktplaats', component: MijnMarktplaatsComponent},
-  {path: 'betalen', component: PaymentPage}
+  {path: 'betalen', component: PaymentPage},
 ];

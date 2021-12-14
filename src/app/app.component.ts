@@ -50,10 +50,6 @@ export class AppComponent {
     }
   }
 
-  isLoggedIn(): boolean {
-    return this.loggedIn;
-  }
-
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['/']);
