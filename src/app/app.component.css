@@ -44,9 +44,9 @@ a {
 }
 
 .container {
-  border-radius: 25px;
-  margin-top: 2rem;
+  border-radius: 0 0 25px 25px;
   padding: 1rem;
+  padding-top: 2em;
   background: white;
 }
 
