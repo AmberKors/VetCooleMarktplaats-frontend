@@ -13,7 +13,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of products | filter: searchText">
+  <tr *ngFor="let product of productsToShow | filter: searchText">
     <td>
       {{product.name}}
     </td>
@@ -37,7 +37,8 @@
                 (click)="addToShoppingCart(product)">
           Voeg toe <i class="fas fa-shopping-cart"></i>
         </button>
-        <button *ngIf="product.shoppingCart && product.shoppingCart.id == loggedInUser.shoppingCart.id" type="button" class="btn btn-danger"
+        <button *ngIf="product.shoppingCart && product.shoppingCart.id == loggedInUser.shoppingCart.id" type="button"
+                class="btn btn-danger"
                 (click)="deleteFromShoppingCart(product)">
           Verwijder <i class="fas fa-shopping-cart"></i>
         </button>
