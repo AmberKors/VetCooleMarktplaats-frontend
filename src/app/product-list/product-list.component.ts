@@ -29,7 +29,11 @@ export class ProductListComponent implements OnInit {
       this.productService.getProducts().subscribe(products => {
         this.products = [];
         this.checkForPrivateItems(products);
-        this.checkIfAlreadyInShoppingCart();
+        if (!this.privateItems) {
+          this.checkIfAlreadyInShoppingCart();
+        } else {
+          this.productsToShow = this.products;
+        }
       })
     }
 
