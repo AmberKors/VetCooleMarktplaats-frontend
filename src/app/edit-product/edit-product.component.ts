@@ -67,7 +67,6 @@ export class EditProductComponent implements OnInit {
   }
 
   changeProduct() {
-    console.log("wordt dit aangeroepen?")
     this.productChanged = true;
   }
 }
