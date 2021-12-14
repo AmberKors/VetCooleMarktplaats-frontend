@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
   privateItems: boolean;
 
   products: Product[] = [];
+  productsToShow: Product[] = [];
   searchText: string;
   loggedInUser: User;
 
@@ -22,23 +23,23 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(products => {
-      this.products = [];
-      this.checkForPrivateItems(products);
-      this.checkIfAlreadyInShoppingCart();
-    })
-
     let recievedFromStorage = localStorage.getItem('loggedInUser');
     if (recievedFromStorage != null) {
       this.loggedInUser = JSON.parse(recievedFromStorage);
+      this.productService.getProducts().subscribe(products => {
+        this.products = [];
+        this.checkForPrivateItems(products);
+        this.checkIfAlreadyInShoppingCart();
+      })
     }
 
   }
 
   checkIfAlreadyInShoppingCart() {
+    this.productsToShow = [];
     this.products.forEach(product => {
-      if (product.shoppingCart && product.shoppingCart.id != this.loggedInUser.shoppingCart.id) {
-        this.products.splice(this.products.indexOf(product), 1);
+      if (!product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id) {
+        this.productsToShow.push(product);
       }
     })
   }
