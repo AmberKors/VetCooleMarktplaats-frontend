@@ -26,7 +26,9 @@ export class SneakPeekComponent implements OnInit {
     this.productService.getProducts().subscribe(products => {
       products.forEach(product => {
         if (product.user.id != this.loggedInUser.id) {
-          this.productList.push(product)
+          if (!product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id) {
+            this.productList.push(product)
+          }
         }
       })
       if (this.productList.length >= 4) {

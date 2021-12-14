@@ -47,24 +47,24 @@
   Ohjee, dit product lijkt niet te bestaan.
 </div>
 
-<div class="row">
-  <div class="col-1">
-    <button type="button" class="btn btn-primary" (click)="back()">
-      <i class="fas fa-angle-left"></i> Terug
-    </button>
-  </div>
-  <div class="col-2" *ngIf="product != undefined && !product.shoppingCart">
-    <button type="button" class="btn btn-success" (click)="addToShoppingCart(product)">
-      Voeg toe <i class="fas fa-shopping-cart"></i>
-    </button>
-  </div>
 
-  <div class="col" *ngIf="product != undefined && product.shoppingCart">
-    <button type="button" class="btn btn-danger" (click)="deleteFromShoppingCart(product)">
-      Verwijder <i class="fas fa-shopping-cart"></i>
-    </button>
-  </div>
+<div class="btn-div-row">
+  <button type="button" class="btn btn-primary" (click)="back()">
+    <i class="fas fa-angle-left"></i> Terug
+  </button>
 </div>
+<div class="btn-div-row" *ngIf="product != undefined && !product.shoppingCart">
+  <button type="button" class="btn btn-success" (click)="addToShoppingCart(product)">
+    Voeg toe <i class="fas fa-shopping-cart"></i>
+  </button>
+</div>
+
+<div class="btn-div-row" *ngIf="product != undefined && product.shoppingCart">
+  <button type="button" class="btn btn-danger" (click)="deleteFromShoppingCart(product)">
+    Verwijder <i class="fas fa-shopping-cart"></i>
+  </button>
+</div>
+
 
 
 
