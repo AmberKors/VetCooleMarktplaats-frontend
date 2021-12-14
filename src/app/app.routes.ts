@@ -5,6 +5,7 @@ import {ProductRegistrationComponent} from "./product-registration/product-regis
 import {DetailPage} from "./pages/detail.page";
 import {MijnMarktplaatsComponent} from "./mijn-marktplaats/mijn-marktplaats.component";
 import {ProductListComponent} from "./product-list/product-list.component";
+import {PaymentPage} from "./pages/payment.page";
 
 export const routes: Route[] = [
   {path: '', component: HomePage},
@@ -13,4 +14,5 @@ export const routes: Route[] = [
   {path: 'products/:id', component: DetailPage},
   {path: 'nieuw-product', component: ProductRegistrationComponent},
   {path: 'mijn-marktplaats', component: MijnMarktplaatsComponent},
+  {path: 'betalen', component: PaymentPage}
 ];

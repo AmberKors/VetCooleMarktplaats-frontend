@@ -22,7 +22,8 @@ import {DeliveryPipe} from "./pipes/delivery.pipe";
 import {EditProductComponent} from './edit-product/edit-product.component';
 import {DetailPage} from "./pages/detail.page";
 import {SneakPeekComponent} from "./sneak-peek/sneak-peek.component";
-import { MijnMarktplaatsComponent } from './mijn-marktplaats/mijn-marktplaats.component';
+import {MijnMarktplaatsComponent} from './mijn-marktplaats/mijn-marktplaats.component';
+import {PaymentPage} from "./pages/payment.page";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { MijnMarktplaatsComponent } from './mijn-marktplaats/mijn-marktplaats.co
     AppComponent,
     HomePage,
     DetailPage,
+    PaymentPage,
     LoginComponent,
     UserRegistrationComponent,
     ProductRegistrationComponent,

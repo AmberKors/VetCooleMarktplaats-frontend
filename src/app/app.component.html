@@ -7,7 +7,6 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link active" routerLink="/">Home</a>
-      <!--      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/nieuwproduct">Nieuw Product</a>-->
       <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/products">Producten</a>
       <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/mijn-marktplaats">Mijn-Marktplaats</a>
       <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/shopping-cart">Winkelwagen</a>
@@ -17,25 +16,18 @@
   <div class="user">{{loggedInMessage}}</div>
 </nav>
 
-
-<h1>{{title}}</h1>
-
 <div class="container">
-
   <div *ngIf="!loggedIn && loginOrRegister == 'login'">
     <app-login></app-login>
     <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Registreer</button>
   </div>
-
   <div *ngIf="!loggedIn && loginOrRegister == 'register'">
     <app-user-registration></app-user-registration>
     <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Log in</button>
   </div>
-
   <div *ngIf="loggedIn">
     <router-outlet></router-outlet>
   </div>
-
 </div>
 
 
