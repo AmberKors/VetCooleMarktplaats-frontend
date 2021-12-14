@@ -1,13 +1,13 @@
 .login-container {
-  background-color: grey;
-
-  margin-left: 33%;
-  margin-right: 33%;
-  padding: 1rem 1rem 1rem 1rem;
-  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem 1rem 0 1rem;
 }
 
 login-content {
   padding-left: 1rem;
 }
 
+.btn {
+  margin-top: 1rem;
+}

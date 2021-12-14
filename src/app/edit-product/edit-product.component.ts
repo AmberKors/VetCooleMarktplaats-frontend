@@ -17,6 +17,7 @@ export class EditProductComponent implements OnInit {
   editing: boolean = false;
   category = Category;
   categoryOptions = [];
+  productChanged: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,7 +31,10 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.url[1].path;
-    this.productService.product$.subscribe(product => this.product = product);
+    this.productService.product$.subscribe(product => {
+      this.product = product;
+      this.productChanged = false;
+    });
     this.productService.getProduct(+this.id);
   }
 
@@ -45,6 +49,7 @@ export class EditProductComponent implements OnInit {
   saveProduct() {
     this.productService.editProduct(this.product);
     this.showSuccess("Product is gewijzigd.")
+    this.productChanged = false;
   }
 
   deleteProduct(product: Product) {
@@ -59,5 +64,10 @@ export class EditProductComponent implements OnInit {
 
   back(): void {
     this.location.back();
+  }
+
+  changeProduct() {
+    console.log("wordt dit aangeroepen?")
+    this.productChanged = true;
   }
 }

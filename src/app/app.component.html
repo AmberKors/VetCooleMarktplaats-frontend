@@ -19,11 +19,15 @@
 <div class="container">
   <div *ngIf="!loggedIn && loginOrRegister == 'login'">
     <app-login></app-login>
-    <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Registreer</button>
+    <div class="btn-div-center">
+      <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Registreer</button>
+    </div>
   </div>
   <div *ngIf="!loggedIn && loginOrRegister == 'register'">
     <app-user-registration></app-user-registration>
-    <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Log in</button>
+    <div class="btn-div-center">
+      <button type="button" class="btn btn-primary" (click)="toggleRegistrationInlog()">Log in</button>
+    </div>
   </div>
   <div *ngIf="loggedIn">
     <router-outlet></router-outlet>

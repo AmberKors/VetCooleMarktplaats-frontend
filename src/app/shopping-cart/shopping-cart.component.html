@@ -40,15 +40,14 @@
 
 <p *ngIf="products.length == 0">Je hebt nog geen producten in je mandje staan, keer terug om producten toe te voegen</p>
 
-<div class="row">
-  <div class="col-1">
-    <button type="button" class="btn btn-primary" (click)="back()">
-      <i class="fas fa-angle-left"></i> Terug
-    </button>
-  </div>
-  <div class="col-2" *ngIf="products.length > 0">
-    <button type="button" class="btn btn-primary" routerLink="/betalen">
-      Betalen <i class="fas fa-coins"></i>
-    </button>
-  </div>
+<div class="btn-div-row">
+  <button type="button" class="btn btn-primary" (click)="back()">
+    <i class="fas fa-angle-left"></i> Terug
+  </button>
 </div>
+<div class="btn-div-row" *ngIf="products.length > 0">
+  <button type="button" class="btn btn-primary" routerLink="/betalen">
+    Betalen <i class="fas fa-coins"></i>
+  </button>
+</div>
+

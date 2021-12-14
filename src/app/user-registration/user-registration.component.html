@@ -37,7 +37,7 @@
         </div>
 
         <ng-container *ngIf="afhalenSelected()">
-          <div class="col-sm" >
+          <div class="col-sm">
             <label for="adres">Straat:</label>
             <input type="adres" id="adres" name="adres" [(ngModel)]="newUser.street" required>
           </div>
@@ -61,8 +61,11 @@
         <div class="col-sm">
           <label for="password">Wachtwoord:</label>
           <input type="text" id="password" name="password" minlength="6" [(ngModel)]="newUser.password" required>
-          <button [disabled]="f.invalid">Registreer</button>
         </div>
+        <div class="btn-div-center">
+          <button class="btn btn-primary" [disabled]="f.invalid">Registreer</button>
+        </div>
+
 
       </form>
       <p>{{message$ | async}}</p>

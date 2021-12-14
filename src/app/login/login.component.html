@@ -1,6 +1,3 @@
-
-
-
 <div class="login-container">
   <h2>Log in</h2>
   <div class="row">
@@ -15,9 +12,9 @@
         <div>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
-          <div>
-            <button [disabled]="f.invalid">Log in</button>
-          </div>
+        </div>
+        <div class="btn-div-center">
+          <button class="btn btn-primary" [disabled]="f.invalid">Log in</button>
         </div>
       </form>
       <p>{{message$ | async}}</p>
