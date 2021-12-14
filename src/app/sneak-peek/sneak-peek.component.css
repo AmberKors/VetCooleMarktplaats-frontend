@@ -9,6 +9,7 @@
 .ProductName {
   text-align: center;
   font-size: 1.5rem;
+  height:5rem;
 }
 
 .ProductBody {
@@ -21,7 +22,5 @@
 
 }
 .BuyMeNow{
-
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: 25%;
 }
