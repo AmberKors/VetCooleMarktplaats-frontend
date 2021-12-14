@@ -12,10 +12,16 @@ body {
   background-color: rgba(255, 0, 0, 0);
 }
 
-input.ng-invalid {
+input.ng-invalid  {
   border: solid orangered 1px;
   border-radius: 5px;
 }
+
+textarea.ng-invalid {
+  border: solid orangered 1px;
+border-radius: 5px;
+}
+
 
 .body {
   color: white;

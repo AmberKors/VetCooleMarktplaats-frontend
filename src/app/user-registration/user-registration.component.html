@@ -13,18 +13,18 @@
             <label for="firstName">Voornaam:</label>
           </div>
           <div class="col-sm">
-            <input type="text" id="firstName" name="firstName" [(ngModel)]="newUser.firstName" minlength=" 4" required>
+            <input type="text" id="firstName" name="firstName" pattern="[^<>;:].{1,200}" [(ngModel)]="newUser.firstName"  required>
           </div>
         </div>
 
         <div class="col-sm">
           <label for="surname">Achternaam:</label>
-          <input type="text" id="surname" name="surname" [(ngModel)]="newUser.lastName" minlength="4" required>
+          <input type="text" id="surname" name="surname" pattern="[^<>;:].{1,80}" [(ngModel)]="newUser.lastName"  required>
         </div>
 
         <div class="col-sm">
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" [(ngModel)]="newUser.email" [email]="true" required>
+          <input type="email" id="email" name="email" pattern="[a-z,A-Z]{0,}[@][a-z,A-Z]{0,}[.]{1}[a-z,A-Z]{0,}" [(ngModel)]="newUser.email" [email]="true"  required>
         </div>
 
         <div class="col-sm">
@@ -39,18 +39,19 @@
         <ng-container *ngIf="afhalenSelected()">
           <div class="col-sm">
             <label for="adres">Straat:</label>
-            <input type="adres" id="adres" name="adres" [(ngModel)]="newUser.street" required>
-          </div>
-
-          <div class="col-sm">
-            <label for="postalcode">Postcode:</label>
-            <input type="postalcode" id="postalcode" name="postalcode" [(ngModel)]="newUser.postalcode" required>
+            <input type="adres" id="adres" name="adres" pattern="[^<>;:].{4,200}"[(ngModel)]="newUser.street" required>
           </div>
 
           <div class="col-sm">
             <label for="housenumber">Huisnummer:</label>
-            <input type="housenumber" id="housenumber" name="housenumber" [(ngModel)]="newUser.housenumber" required>
+            <input type="housenumber" id="housenumber" name="housenumber"  pattern="\d{1,3}"[(ngModel)]="newUser.housenumber" required>
           </div>
+
+          <div class="col-sm">
+            <label for="postalcode">Postcode:</label>
+            <input type="postalcode" id="postalcode" name="postalcode"pattern =";{0};{0}[mysql]{0}[droptable]{0};{0}\d{4}[a-z,A-Z]{2}" [(ngModel)]="newUser.postalcode" required>
+          </div>
+
         </ng-container>
 
         <div class="col-sm">

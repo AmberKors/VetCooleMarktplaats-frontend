@@ -29,8 +29,6 @@ export class UserRegistrationComponent {
   }
 
   afhalenSelected() {
-    // console.log("this.newUser.delivery: " + this.newUser.delivery);
-    // console.log("this.delivery.AFHALEN:" + this.delivery.AFHALEN);
     if (this.newUser.delivery !== undefined) {// ! = =
       return (this.newUser.delivery.valueOf() == "AFHALEN");
     } else {
