@@ -1,0 +1,27 @@
+.ProductPreview {
+  width:100%;
+  background-color:#FFFFFF;
+  border: 1px solid #000;
+  border-top-left-radius: 10px;
+  /*border-top-right-radius: 10px;*/
+}
+
+.ProductName {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.ProductBody{
+  margin-left:1rem;
+  margin-bottom:0.1rem;
+}
+
+.ProductDescription{
+  height:10rem;
+
+}
+.BuyMeNow{
+
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
