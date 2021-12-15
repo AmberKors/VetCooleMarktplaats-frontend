@@ -11,7 +11,6 @@ import {Delivery} from "../models/Delivery";
 })
 export class UserRegistrationComponent {
   newUser = {} as User;
-  message$ = this.userService.message$;
   delivery = Delivery;
   deliveryOptions = [];
 

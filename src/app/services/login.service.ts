@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {Observable, of, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {serverUrl} from '../../environments/environment';
 import {User} from '../models/User';
 import {ToastrService} from "ngx-toastr";
@@ -14,9 +14,7 @@ export class LoginService {
   loggedIn$ = new Subject<string>();
   loggedOut$ = new Subject<string>();
 
-  message$ = new Subject<string>();
-
-  constructor(private http: HttpClient,  private toastr: ToastrService) {
+  constructor(private http: HttpClient, private toasty: ToastrService) {
   }
 
   login(u: User): void {
@@ -31,7 +29,7 @@ export class LoginService {
           this.loggedIn$.next(this.loggedInUser.username);
 
           // @ts-ignore
-          this.message$.next(`Gebruiker ${this.loggedInUser.username} is ingelogd.`);
+          this.toasty.success(`Gebruiker ${this.loggedInUser.username} is ingelogd.`)
           localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
 
           // or get a header from the response:
@@ -39,7 +37,7 @@ export class LoginService {
           localStorage.setItem('token', JSON.stringify(token));
         },
         error => {
-          this.toastr.error(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
+          this.toasty.error(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );
   }
@@ -50,16 +48,6 @@ export class LoginService {
 
     // @ts-ignore
     this.loggedOut$.next();
-  }
-
-  // tslint:disable-next-line:typedef
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(`${operation} failed: ${error.message}`); // log to console instead
-      return of(result as T);
-    };
-
   }
 
 }

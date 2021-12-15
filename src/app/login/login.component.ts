@@ -10,7 +10,6 @@ import {LoginService} from "../services/login.service";
 export class LoginComponent {
 
   user = {} as User;
-  message$ = this.service.message$;
 
   constructor(
     private service: LoginService) {

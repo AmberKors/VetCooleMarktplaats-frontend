@@ -1,95 +1,102 @@
-<table class="table" *ngIf="product != undefined">
-  <tbody>
-  <tr>
-    <th>
-      Naam:
-    </th>
-    <td>
-      <div *ngIf="!editing">      {{product.name}}</div>
-      <div *ngIf="editing">
-        <input type="text" pattern="[^[;*&<>%#=]+$" [(ngModel)]="product.name" required (input)="changeProduct()">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <th>
-      Sinds:
-    </th>
-    <td>
-      {{product.datePublished | date:'shortDate'}}
-    </td>
-  </tr>
-  <tr>
-    <th>
-      Categorie:
-    </th>
-    <td>
-      <div *ngIf="!editing">{{product.category | category}}</div>
-      <div *ngIf="editing">
-        <select id="category" name="category" [(ngModel)]="product.category" required (input)="changeProduct()">
-          <option *ngFor="let category of categoryOptions" value="{{category}}">{{category | category}} </option>
-        </select>
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <th>
-      Prijs:
-    </th>
-    <td>
-      <div *ngIf="!editing">      {{product.price | currency:'EUR'}}</div>
-      <div *ngIf="editing">
-        <input type="number" id="price" name="price" min="0.00" step='0.01' lang="en" [(ngModel)]="product.price"
-               required (input)="changeProduct()">
-      </div>
-    </td>
-  </tr>
-  <tr>
-    <th>
-      Omschrijving:
-    </th>
-    <td>
-      <div *ngIf="!editing">{{product.description}}</div>
-      <div *ngIf="editing">
-        <textarea id="description" name="description" maxlength="200" pattern="[^[;*&<>%#=]+$" [(ngModel)]="product.description"
+<div *ngIf="product != undefined">
+  <div *ngIf="product.shoppingCart" class="alert alert-warning">
+    <b>Let op:</b> Dit product is momenteel gereserveerd, aanpassing is
+    niet mogelijk.
+  </div>
+  <table class="table">
+    <tbody>
+    <tr>
+      <th>
+        Naam:
+      </th>
+      <td>
+        <div *ngIf="!editing">      {{product.name}}</div>
+        <div *ngIf="editing">
+          <input type="text" pattern="[^[;*&<>%#=]+$" [(ngModel)]="product.name" required (input)="changeProduct()">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Sinds:
+      </th>
+      <td>
+        {{product.datePublished | date:'shortDate'}}
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Categorie:
+      </th>
+      <td>
+        <div *ngIf="!editing">{{product.category | category}}</div>
+        <div *ngIf="editing">
+          <select id="category" name="category" [(ngModel)]="product.category" required (input)="changeProduct()">
+            <option *ngFor="let category of categoryOptions" value="{{category}}">{{category | category}} </option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Prijs:
+      </th>
+      <td>
+        <div *ngIf="!editing">      {{product.price | currency:'EUR'}}</div>
+        <div *ngIf="editing">
+          <input type="number" id="price" name="price" min="0.00" step='0.01' lang="en" [(ngModel)]="product.price"
+                 required (input)="changeProduct()">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Omschrijving:
+      </th>
+      <td>
+        <div *ngIf="!editing">{{product.description}}</div>
+        <div *ngIf="editing">
+        <textarea id="description" name="description" maxlength="200" pattern="[^[;*&<>%#=]+$"
+                  [(ngModel)]="product.description"
                   (input)="changeProduct()"
                   required></textarea>
-      </div>
-    </td>
-  </tr>
-  </tbody>
-</table>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 
-<div *ngIf="product == undefined">
-  Ohjee, dit product lijkt niet te bestaan.
-</div>
+  <div *ngIf="product == undefined">
+    Ohjee, dit product lijkt niet te bestaan.
+  </div>
 
 
-<div class="btn-div-row">
-  <button type="button" class="btn btn-primary" (click)="back()">
-    <i class="fas fa-angle-left"></i> Terug
-  </button>
-</div>
+  <div class="btn-div-row">
+    <button type="button" class="btn btn-primary" (click)="back()">
+      <i class="fas fa-angle-left"></i> Terug
+    </button>
+  </div>
 
-<div class="btn-div-row" *ngIf="!editing && product != undefined">
-  <button type="button" class="btn btn-primary" (click)="editProduct()">
-    <i class="fas fa-pen"></i> edit
-  </button>
-</div>
-<div class="btn-div-row" *ngIf="editing && product != undefined">
-  <button *ngIf="productChanged" type="button" class="btn btn-success"
-          (click)="editProduct(); saveProduct()">
-    save
-  </button>
-  <button *ngIf="!productChanged" type="button" class="btn btn-warning" (click)="editProduct()">
-    Annuleren
-  </button>
-</div>
-<div class="btn-div-row" *ngIf="product != undefined">
-  <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">
-    Verwijder
-  </button>
-</div>
+  <div class="btn-div-row" *ngIf="!editing && product != undefined">
+    <button type="button" class="btn btn-primary" [disabled]="product.shoppingCart" (click)="editProduct()">
+      <i class="fas fa-pen"></i> edit
+    </button>
+  </div>
+  <div class="btn-div-row" *ngIf="editing && product != undefined">
+    <button *ngIf="productChanged" type="button" class="btn btn-success"
+            (click)="editProduct(); saveProduct()">
+      save
+    </button>
+    <button *ngIf="!productChanged" type="button" class="btn btn-warning" (click)="editProduct()">
+      Annuleren
+    </button>
+  </div>
+  <div class="btn-div-row" *ngIf="product != undefined">
+    <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">
+      Verwijder
+    </button>
+  </div>
 
+</div>
 
 

@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {serverUrl} from '../../environments/environment';
 import {User} from '../models/User';
-import {Observable, of, Subject} from "rxjs";
+import {Subject} from "rxjs";
 import {LoginService} from "./login.service";
 import {ToastrService} from "ngx-toastr";
 
@@ -32,24 +32,18 @@ export class UserService {
         },
 
         error => {
-          this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
+          this.toasty.error(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );
   }
 
-  // tslint:disable-next-line:typedef
-  private handleError<T>(operation = 'operation', result ?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(`${operation} failed: ${error.message}`); // log to console instead
-      return of(result as T);
-    };
-  }
-
   getUser(id: number) {
     this.http.get<User>(this.uri + "/" + id).subscribe(user => {
-      this.loggedInUser$.next(user);
-    })
+        this.loggedInUser$.next(user);
+      },
+      error => {
+        this.toasty.error(`Ophalen van gebruiker is mislukt.  Reden: ${error.statusText}.`);
+      })
   }
 
   getLoggedInUser(): User {
