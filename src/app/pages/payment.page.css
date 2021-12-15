@@ -1,6 +1,7 @@
 .container {
   background-image: url("https://www.pngall.com/wp-content/uploads/5/Confetti-Party-PNG-File.png");
   background-repeat: no-repeat;
+  background-size: 115% 121%;
   background-position: center;
   height: 400px;
   padding: 5rem;
