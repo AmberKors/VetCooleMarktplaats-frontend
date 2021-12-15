@@ -1,21 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="navbar-brand">VCM</div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/">Home</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/products">Producten</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/mijn-marktplaats">Mijn-Marktplaats</a>
-      <a *ngIf="loggedIn" class="nav-item nav-link" routerLink="/shopping-cart">Winkelwagen</a>
-    </div>
 
+<nav class="navbar navbar-expand-md navbar-light mb-1">
+  <div class="container-fluid">
+    <div class="navbar-brand">VCM</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" routerLinkActive="active" routerLink="/products">Producten</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/mijn-marktplaats">Mijn-Marktplaats</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/shopping-cart">Winkelwagen</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-item loginButton">
+      <a class="nav-link" routerLinkActive="active" (click)="logout()">Log out</a>
+    </div>
+    <div class="user">{{loggedInMessage}}</div>
   </div>
-  <div class = loginButton> <a *ngIf="loggedIn" class="nav-item nav-link" (click)="logout()">Log out</a></div>
-  <div class="user">{{loggedInMessage}}</div>
 </nav>
+
 
 <div class="container">
   <div *ngIf="!loggedIn && loginOrRegister == 'login'">
