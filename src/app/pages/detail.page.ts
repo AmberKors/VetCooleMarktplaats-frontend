@@ -3,6 +3,7 @@ import {ProductService} from "../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {Product} from "../models/Product";
 import {User} from "../models/User";
+import {UserService} from "../services/user.service";
 
 @Component({
   templateUrl: './detail.page.html',
@@ -10,34 +11,23 @@ import {User} from "../models/User";
 export class DetailPage {
   id: string = "";
   product: Product;
-  loggedInUser: User;
+  loggedInUser: User = this.userService.getLoggedInUser();
   mijnMarktplaats: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.url[1].path;
     this.productService.product$.subscribe(product => {
         this.product = product
-        let recievedFromStorage = localStorage.getItem('loggedInUser');
-        if (recievedFromStorage != null) {
-          this.loggedInUser = JSON.parse(recievedFromStorage);
-        }
 
-
-        if (this.product.user.id == this.loggedInUser.id) {
-          this.mijnMarktplaats = true;
-        } else {
-          this.mijnMarktplaats = false;
-        }
-
+        this.mijnMarktplaats = this.product.user.id == this.loggedInUser.id;
       }
     );
     this.productService.getProduct(+this.id);
-
-
   }
 
 }

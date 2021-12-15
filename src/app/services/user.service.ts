@@ -10,7 +10,6 @@ import {ToastrService} from "ngx-toastr";
 export class UserService {
 
   private uri = serverUrl + '/users';
-  private user: User;
 
   loggedInUser$ = new Subject<User>();
 
@@ -52,4 +51,9 @@ export class UserService {
       this.loggedInUser$.next(user);
     })
   }
+
+  getLoggedInUser(): User {
+    return JSON.parse(<string>localStorage.getItem('loggedInUser'));
+  }
+
 }
