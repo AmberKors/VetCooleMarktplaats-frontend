@@ -45,6 +45,7 @@ export class LoginService {
   logout(): void {
     this.loggedInUser = null;
     localStorage.clear();
+    window.location.href = "http://localhost:4200";
 
     // @ts-ignore
     this.loggedOut$.next();
