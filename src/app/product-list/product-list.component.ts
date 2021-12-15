@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     if (this.mijnMarktplaats) {
-      this.productService.getProductsByUser(this.loggedInUser.id).subscribe(products => {
+      this.productService.getProductsByUser().subscribe(products => {
         this.products = products;
       })
     } else {

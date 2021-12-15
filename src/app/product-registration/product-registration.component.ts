@@ -13,11 +13,11 @@ import {UserService} from "../services/user.service";
 export class ProductRegistrationComponent {
 
   newProduct = {} as Product;
-  message$ = this.service.message$;
+  message$ = this.productService.message$;
   category = Category;
   categoryOptions = [];
 
-  constructor(private service: ProductService,
+  constructor(private productService: ProductService,
               private toastr: ToastrService,
               private userService: UserService) {
     // @ts-ignore
@@ -26,7 +26,7 @@ export class ProductRegistrationComponent {
 
   addProduct(): void {
     this.newProduct.user = this.userService.getLoggedInUser();
-    this.service.addProduct(this.newProduct)
+    this.productService.addProduct(this.newProduct)
     this.newProduct = {} as Product;
     this.showSuccess("Product is toegevoegd!");
   }
@@ -34,6 +34,4 @@ export class ProductRegistrationComponent {
   showSuccess(message: string) {
     this.toastr.success(message);
   }
-
-
 }
