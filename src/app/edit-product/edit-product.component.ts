@@ -47,7 +47,7 @@ export class EditProductComponent implements OnInit {
   }
 
   saveProduct() {
-    this.productService.editProduct(this.product);
+    this.productService.editProduct(this.product, true);
     this.showSuccess("Product is gewijzigd.")
     this.productChanged = false;
   }

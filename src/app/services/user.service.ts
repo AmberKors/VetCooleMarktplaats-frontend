@@ -8,14 +8,9 @@ import {ToastrService} from "ngx-toastr";
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-
   private uri = serverUrl + '/users';
-
   loggedInUser$ = new Subject<User>();
-
   createdUser$ = new Subject<string>();
-
-  message$ = new Subject<string>();
 
   constructor(private http: HttpClient, private loginService: LoginService, private toasty: ToastrService) {
   }

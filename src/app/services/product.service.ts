@@ -44,8 +44,14 @@ export class ProductService {
     this.http.post(this.url, product).subscribe(() => this.getProductsByUser())
   }
 
-  editProduct(product: Product) {
-    this.http.put(this.url + "/" + product.id, product).subscribe(() => this.getProductsByUser());
+  editProduct(product: Product, mijnMarktplaats: boolean) {
+    this.http.put(this.url + "/" + product.id, product).subscribe(() => {
+      if (mijnMarktplaats) {
+        this.getProductsByUser();
+      } else {
+        this.getProducts();
+      }
+    })
   }
 
   deleteProduct(product: Product) {

@@ -5,6 +5,7 @@ import {ProductService} from "../services/product.service";
 import {Location} from '@angular/common'
 import {ToastrService} from "ngx-toastr";
 import {User} from "../models/User";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-product-detail',
@@ -14,20 +15,16 @@ import {User} from "../models/User";
 export class ProductDetailComponent implements OnInit {
   id: string = "";
   product: Product;
-  loggedInUser: User;
+  loggedInUser: User = this.userService.getLoggedInUser();
 
   constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductService,
               private location: Location,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
-    let recievedFromStorage = localStorage.getItem('loggedInUser');
-    if (recievedFromStorage != null) {
-      this.loggedInUser = JSON.parse(recievedFromStorage);
-    }
-
     this.id = this.activatedRoute.snapshot.url[1].path;
     this.productService.product$.subscribe(product => {
       if (!product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id)
@@ -37,10 +34,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToShoppingCart(product: Product) {
-
     if (!product.shoppingCart) {
       product.shoppingCart = this.loggedInUser.shoppingCart;
-      this.productService.editProduct(product);
+      this.productService.editProduct(product, false);
       this.showSuccess("Product is toegevoegd aan de winkelwagen!");
 
     }
@@ -49,7 +45,7 @@ export class ProductDetailComponent implements OnInit {
   deleteFromShoppingCart(product: Product) {
     // @ts-ignore
     product.shoppingCart = null;
-    this.productService.editProduct(product);
+    this.productService.editProduct(product, false);
     this.showError("Product is verwijderd uit de winkelwagen");
   }
 

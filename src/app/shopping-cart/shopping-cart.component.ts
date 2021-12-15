@@ -52,7 +52,7 @@ export class ShoppingCartComponent implements OnInit {
   deleteFromShoppingCart(product: Product) {
     // @ts-ignore
     product.shoppingCart = null;
-    this.productService.editProduct(product);
+    this.productService.editProduct(product, false);
     this.showSuccess("Product is verwijderd uit de winkelwagen");
   }
 

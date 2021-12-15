@@ -39,7 +39,7 @@ export class ProductListComponent implements OnInit {
   addToShoppingCart(product: Product) {
     if (!product.shoppingCart) {
       product.shoppingCart = this.loggedInUser.shoppingCart;
-      this.productService.editProduct(product);
+      this.productService.editProduct(product, false);
       this.showSuccess("Product is toegevoegd aan de winkelwagen!");
     }
   }
@@ -47,7 +47,7 @@ export class ProductListComponent implements OnInit {
   deleteFromShoppingCart(product: Product) {
     // @ts-ignore
     product.shoppingCart = null;
-    this.productService.editProduct(product);
+    this.productService.editProduct(product, false);
     this.showError("Product is verwijderd uit de winkelwagen");
   }
 
