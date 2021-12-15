@@ -33,12 +33,12 @@ export class AppComponent {
 
     this.loggedIn$.subscribe((userName) => {
       this.loggedIn = true;
-      this.loggedInMessage = `Logged in as ${userName}.`;
+      this.loggedInMessage = `Logged in as ${userName}`;
     });
 
     this.loggedOut$.subscribe((userName) => {
       this.loggedIn = false;
-      this.loggedInMessage = 'Not logged in.';
+      this.loggedInMessage = 'Not logged in';
     });
   }
 

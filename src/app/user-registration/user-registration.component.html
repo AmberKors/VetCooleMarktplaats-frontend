@@ -13,21 +13,18 @@
             <label for="firstName">Voornaam:</label>
           </div>
           <div class="col-sm">
-            <input type="text" id="firstName" name="firstName" pattern="[^<>;:].{1,200}" [(ngModel)]="newUser.firstName"
-                   required>
+            <input type="text" id="firstName" name="firstName" minlength="3" maxlength="80" pattern="[^[;<>*&%#=0-9]+$" [(ngModel)]="newUser.firstName"  required>
           </div>
         </div>
 
         <div class="col-sm">
           <label for="surname">Achternaam:</label>
-          <input type="text" id="surname" name="surname" pattern="[^<>;:].{1,80}" [(ngModel)]="newUser.lastName"
-                 required>
+          <input type="text" id="surname" name="surname"minlength="3" maxlength="80" pattern="[^[;<>*&%#=0-9]+$" [(ngModel)]="newUser.lastName"  required>
         </div>
 
         <div class="col-sm">
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" pattern="[a-z,A-Z]{0,}[@][a-z,A-Z]{0,}[.]{1}[a-z,A-Z]{0,}"
-                 [(ngModel)]="newUser.email" [email]="true" required>
+          <input type="email" id="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="newUser.email" [email]="true"  required>
         </div>
 
         <div class="col-sm">
@@ -42,122 +39,34 @@
         <ng-container *ngIf="afhalenSelected()">
           <div class="col-sm">
             <label for="adres">Straat:</label>
-            <input type="adres" id="adres" name="adres" pattern="[^<>;:].{4,200}" [(ngModel)]="newUser.street" required>
+            <input type="text" id="adres" name="adres" minlength="2"maxlength="80" pattern="[^[<>;*&%#=0-9]+$"[(ngModel)]="newUser.street" required>
           </div>
 
           <div class="col-sm">
             <label for="housenumber">Huisnummer:</label>
-            <input type="housenumber" id="housenumber" name="housenumber" pattern="\d{1,3}"
-                   [(ngModel)]="newUser.housenumber" required>
+            <input type="text" id="housenumber" name="housenumber"  pattern="[^[;*<>&%#=]+$\d{0,3}\D{0,1}$"[(ngModel)]="newUser.housenumber" required>
           </div>
 
           <div class="col-sm">
             <label for="postalcode">Postcode:</label>
-            <input type="postalcode" id="postalcode" name="postalcode"
-                   pattern=";{0};{0}[mysql]{0}[droptable]{0};{0}\d{4}[a-z,A-Z]{2}" [(ngModel)]="newUser.postalcode"
-                   required>
+            <input type="text" id="postalcode" name="postalcode"pattern ="[1-9]{1}[0-9]{3}[a-zA-Z]{2}" [(ngModel)]="newUser.postalcode" required>
           </div>
 
         </ng-container>
 
         <div class="col-sm">
           <label for="username">Gebruikersnaam:</label>
-          <input type="text" id="username" name="username" minlength="6" [(ngModel)]="newUser.username" required>
+          <input type="text" id="username" name="username" minlength="4" maxlength="80" pattern ="[^[;*&<>%#=]+$" [(ngModel)]="newUser.username" required>
         </div>
 
         <div class="col-sm">
           <label for="password">Wachtwoord:</label>
-          <input type="password" id="password" name="password" minlength="6" [(ngModel)]="newUser.password" required>
+          <input type="password" id="password" name="password" minlength="6" maxlength="128" pattern="[^[*&<>%#=]+$" [(ngModel)]="newUser.password" required>
         </div>
 
-        <div class="voorwaarden-container">
-          <h3>Algemene voorwaarden</h3>
-          <h5>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h5>
-          <p> Vivamus justo felis, tempus et enim vel, faucibus dignissim dolor. In pellentesque nisi et dolor sagittis
-            euismod.
-            Vivamus dictum dignissim tortor, vitae maximus lacus auctor sed. Proin dui arcu, porta eget orci ac, aliquet
-            blandit
-            leo. Nulla facilisi. Sed et nisi vel odio pretium eleifend id et mauris. Etiam vel accumsan erat. Aenean
-            laoreet elit
-            ac diam pretium, eget auctor ipsum porttitor. Pellentesque a mattis orci. Duis congue viverra molestie.</p>
-
-          <p>Nam ut nisi eget ante dictum bibendum. In consectetur tempus orci. Vestibulum sapien metus, sodales vel
-            orci nec,
-            porttitor ornare lacus. Morbi mauris dolor, pharetra ut mi eget, euismod mollis sem. In hac habitasse platea
-            dictumst.
-            Fusce tempor mauris nunc, in fringilla lacus viverra sit amet. Maecenas orci purus, lobortis ac elit et,
-            scelerisque
-            cursus justo. Duis vel ultrices enim.</p>
-          <p>Duis a mollis odio, sit amet varius quam. Suspendisse non consectetur purus. Ut blandit, quam sed eleifend
-            venenatis,
-            libero ante faucibus eros, ac placerat magna nibh eu risus. Proin nec massa non dui lacinia rutrum. Aliquam
-            sodales
-            augue et faucibus aliquet. Donec eros risus, tincidunt id gravida id, elementum ac ex. Nunc sit amet enim id
-            dolor
-            laoreet convallis nec scelerisque ligula. Vestibulum id lectus eu purus dignissim aliquet.
-          </p>
-          <p>Donec dignissim lobortis mi sed luctus. Nam nec nunc a sem ultricies commodo vel a nunc. Quisque cursus
-            nunc quis
-            nibh suscipit pellentesque imperdiet ut neque. Proin sit amet magna at mauris aliquam blandit sed in velit.
-            Duis vitae
-            volutpat turpis, sed feugiat risus. Fusce et sagittis ligula. Proin facilisis ipsum sed tincidunt placerat.
-            Phasellus
-            eleifend metus quis diam pharetra ornare. Suspendisse in ullamcorper felis. Class aptent taciti sociosqu ad
-            litora
-            torquent per conubia nostra, per inceptos himenaeos. In ultricies in dui ut aliquam. Sed ac pretium arcu.
-            Fusce quam
-            odio, volutpat id tempor id, venenatis a justo. Aenean eget tempor orci. Donec a felis in lectus bibendum
-            tempor.
-          </p>
-          <p>Integer dapibus aliquet tristique. Maecenas et tortor enim. Pellentesque lacus magna, varius sed arcu
-            blandit,
-            suscipit maximus arcu. In gravida enim eu velit cursus, sit amet sodales est viverra. Morbi in consectetur
-            dolor.
-            Vivamus vestibulum sem ut dolor convallis, sit amet porta risus suscipit. Curabitur maximus est eu ipsum
-            porta mollis.
-            Sed ultricies dignissim ipsum vitae ultrices. Nunc vitae commodo mauris. Aenean cursus consectetur orci quis
-            egestas.
-            Aliquam mi nisi, gravida non nisl vel, sollicitudin iaculis felis. Nunc non felis vulputate, interdum tortor
-            finibus,
-            aliquet lorem. Pellentesque lacinia quam a enim tempus viverra. Sed nunc ex, tempor non diam a, malesuada
-            ultrices
-            dui. Vestibulum at suscipit ante. Nullam sagittis nulla quis ante lobortis ullamcorper.
-          </p>
-          <p>Nam hendrerit a eros eget elementum. Vestibulum vitae lorem et nibh volutpat hendrerit sit amet porta enim.
-            Fusce eu
-            tellus luctus, dignissim justo eget, hendrerit lacus. Vivamus in mi id nibh faucibus faucibus. Donec sit
-            amet risus
-            sapien. Duis iaculis finibus velit ac rutrum. Fusce auctor vitae dui quis luctus. Orci varius natoque
-            penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus. Aliquam finibus malesuada eros volutpat euismod. Ut in
-            tempus
-            est. Sed at leo vitae ligula porttitor pellentesque. Nullam consectetur efficitur arcu, at elementum nunc
-            elementum
-            vel. Nunc eget ipsum at lectus sagittis efficitur eget ut velit. Curabitur vitae egestas dolor. Sed mattis
-            sem id
-            ligula luctus faucibus.
-          </p>
-          <p>Donec tempus risus fermentum mi efficitur consequat. Ut nec magna eros. Integer fermentum ullamcorper
-            velit, eget
-            bibendum massa pharetra at. Nullam sit amet nisl tempor, accumsan eros ut, molestie ligula. Aliquam dapibus
-            dapibus mi
-            quis suscipit. Fusce cursus malesuada arcu, elementum pulvinar nisi aliquet et. Morbi eget dictum diam, in
-            cursus
-            velit. Phasellus sed pulvinar augue, a tempus nulla.
-          </p>
-          <p>Nullam a dolor porttitor, dictum ipsum vestibulum, sodales tortor. Nulla facilisi. Duis in urna a mauris
-            fringilla
-            bibendum id eu tortor. Cras quis pharetra augue. Aliquam et purus dictum, lobortis ligula ornare, suscipit
-            massa.
-            Praesent at tortor et metus facilisis dapibus. Nam pellentesque massa eu nisi placerat, a pharetra purus
-            dignissim.</p>
-        </div>
         <div class="col-md">
-          <label for="LegalRequired">Akkoord met de voorwaarden </label>
-          <input type="checkbox" id="LegalRequired"
-                 name="LegalRequired" value="true" (input)="log()"
-                 [(ngModel)]="newUser.legalRequired"
-                 required>
+          <label for="LegalRequired">Akkoord met de <a href="/voorwaarden">voorwaarden</a></label>
+          <input type="checkbox" id="LegalRequired" name ="LegalRequired" value="true" (input)="log()" [(ngModel)]="newUser.legalRequired" required>
         </div>
         <div class="btn-div-center">
           <button class="btn btn-primary" [disabled]="f.invalid">Registreer</button>

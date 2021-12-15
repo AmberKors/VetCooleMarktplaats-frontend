@@ -60,7 +60,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   showSuccess(message: string) {
-    this.toastr.success(message);
+    this.toastr.error(message);
   }
 
   back(): void {

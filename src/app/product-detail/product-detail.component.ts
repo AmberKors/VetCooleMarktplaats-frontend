@@ -50,11 +50,15 @@ export class ProductDetailComponent implements OnInit {
     // @ts-ignore
     product.shoppingCart = null;
     this.productService.editProduct(product);
-    this.showSuccess("Product is verwijderd uit de winkelwagen");
+    this.showError("Product is verwijderd uit de winkelwagen");
   }
 
   showSuccess(message: string) {
     this.toastr.success(message);
+  }
+
+  showError(message: string) {
+    this.toastr.error(message);
   }
 
   back(): void {

@@ -8,7 +8,7 @@ export interface User {
   firstName: string;
   lastName: string;
   street: string;
-  housenumber: number;
+  housenumber: string;
   postalcode: string;
   email: string;
   delivery: Delivery;

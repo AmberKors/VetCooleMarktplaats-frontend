@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {serverUrl} from '../../environments/environment';
 import {User} from '../models/User';
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({providedIn: 'root'})
 export class LoginService {
@@ -15,7 +16,7 @@ export class LoginService {
 
   message$ = new Subject<string>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,  private toastr: ToastrService) {
   }
 
   login(u: User): void {
@@ -39,7 +40,7 @@ export class LoginService {
         },
         error => {
           console.log(error);
-          this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
+          this.toastr.error(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );
   }
