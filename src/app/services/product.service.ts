@@ -49,6 +49,6 @@ export class ProductService {
   }
 
   deleteProduct(product: Product) {
-    this.http.delete(this.url + "/" + product.id).subscribe(() => this.getProductsByUser())
+    this.http.delete(this.url + "/" + product.id);
   }
 }
