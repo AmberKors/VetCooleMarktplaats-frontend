@@ -1,4 +1,4 @@
-<div class="form-group mb-4" *ngIf="!privateItems">
+<div class="form-group mb-4" *ngIf="!mijnMarktplaats">
   <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
 </div>
 
@@ -13,7 +13,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of productsToShow | filter: searchText">
+  <tr *ngFor="let product of products | filter: searchText">
     <td>
       {{product.name}}
     </td>
@@ -24,15 +24,15 @@
       {{product.price | currency:'EUR'}}
     </td>
     <td>
-      <div class="icon-btn" *ngIf="!privateItems">
+      <div class="icon-btn" *ngIf="!mijnMarktplaats">
         <i class="fas fa-info-circle" routerLink="/products/{{product.id}}"></i>
       </div>
-      <div class="icon-btn" *ngIf="privateItems">
+      <div class="icon-btn" *ngIf="mijnMarktplaats">
         <i class="fas fa-pen" routerLink="/products/{{product.id}}"></i>
       </div>
     </td>
     <td>
-      <div *ngIf="product.user.username != loggedInUser.username">
+      <div *ngIf="!mijnMarktplaats">
         <button *ngIf="!product.shoppingCart" type="button" class="btn btn-success"
                 (click)="addToShoppingCart(product)">
           Voeg toe <i class="fas fa-shopping-cart"></i>

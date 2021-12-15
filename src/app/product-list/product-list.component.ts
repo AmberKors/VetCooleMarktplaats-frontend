@@ -11,10 +11,8 @@ import {User} from "../models/User";
 })
 export class ProductListComponent implements OnInit {
   @Input()
-  privateItems: boolean;
-
+  mijnMarktplaats: boolean;
   products: Product[] = [];
-  productsToShow: Product[] = [];
   searchText: string;
   loggedInUser: User;
 
@@ -26,38 +24,24 @@ export class ProductListComponent implements OnInit {
     let recievedFromStorage = localStorage.getItem('loggedInUser');
     if (recievedFromStorage != null) {
       this.loggedInUser = JSON.parse(recievedFromStorage);
-      this.productService.getProducts().subscribe(products => {
-        this.products = [];
-        this.checkForPrivateItems(products);
-        if (!this.privateItems) {
-          this.checkIfAlreadyInShoppingCart();
-        } else {
-          this.productsToShow = this.products;
-        }
-      })
-    }
 
-  }
-
-  checkIfAlreadyInShoppingCart() {
-    this.productsToShow = [];
-    this.products.forEach(product => {
-      if (!product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id) {
-        this.productsToShow.push(product);
-      }
-    })
-  }
-
-  checkForPrivateItems(products: Product[]) {
-    products.forEach(product => {
-      if (this.privateItems == true) {
-        if (product.user.id == this.loggedInUser.id) {
-          this.products.push(product);
-        }
+      if (this.mijnMarktplaats) {
+        this.productService.getProductsByUser(this.loggedInUser.id).subscribe(products => {
+          this.products = products;
+        })
       } else {
-        if (product.user.id != this.loggedInUser.id) {
-          this.products.push(product);
-        }
+        this.productService.getProducts().subscribe(products => {
+          this.checkIfAlreadyInShoppingCart(products);
+        })
+      }
+    }
+  }
+
+  checkIfAlreadyInShoppingCart(products: Product[]) {
+    this.products = [];
+    products.forEach(product => {
+      if (!product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id) {
+        this.products.push(product);
       }
     })
   }

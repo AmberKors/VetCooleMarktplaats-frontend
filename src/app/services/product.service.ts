@@ -25,6 +25,13 @@ export class ProductService {
     return this.productList$;
   }
 
+  getProductsByUser(id: number): Observable<Product[]> {
+    this.http.get<Product[]>(this.url + "?user_id=" + id).subscribe(products => {
+      this.productList$.next(products);
+    });
+    return this.productList$;
+  }
+
   getProduct(id: number) {
     this.http.get<Product>(this.url + "/" + id).subscribe(product => {
       this.product$.next(product);
