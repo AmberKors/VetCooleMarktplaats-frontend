@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-md navbar-light mb-1">
   <div class="container-fluid">
     <div class="navbar-brand">VCM</div>
@@ -11,18 +10,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/">Home</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="loggedIn">
           <a class="nav-link" routerLinkActive="active" routerLink="/products">Producten</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="loggedIn">
           <a class="nav-link" routerLinkActive="active" routerLink="/mijn-marktplaats">Mijn-Marktplaats</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="loggedIn">
           <a class="nav-link" routerLinkActive="active" routerLink="/shopping-cart">Winkelwagen</a>
         </li>
       </ul>
     </div>
-    <div class="nav-item loginButton">
+    <div class="nav-item loginButton" *ngIf="loggedIn">
       <a class="nav-link" routerLinkActive="active" (click)="logout()">Log out</a>
     </div>
     <div class="user">{{loggedInMessage}}</div>
