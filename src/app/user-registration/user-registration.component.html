@@ -13,22 +13,22 @@
             <label for="firstName">Voornaam:</label>
           </div>
           <div class="col-sm">
-            <input type="text" id="firstName" name="firstName" minlength="3" maxlength="80" pattern="[^[;<>*&%#=0-9]+$" [(ngModel)]="newUser.firstName"  required>
+            <input type="text" id="firstName" name="firstName" placeholder="Richard" minlength="3" maxlength="80" pattern="[^[;<>*&%#=0-9]+$" [(ngModel)]="newUser.firstName"  required>
           </div>
         </div>
 
         <div class="col-sm">
           <label for="surname">Achternaam:</label>
-          <input type="text" id="surname" name="surname"minlength="3" maxlength="80" pattern="[^[;<>*&%#=0-9]+$" [(ngModel)]="newUser.lastName"  required>
+          <input type="text" id="surname" name="surname" placeholder="Kameel" minlength="3" maxlength="80" pattern="[^[;<>*&%#=0-9]+$" [(ngModel)]="newUser.lastName"  required>
         </div>
 
         <div class="col-sm">
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="newUser.email" [email]="true"  required>
+          <input type="email" id="email" placeholder="RKameel@vcm.bd"name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="newUser.email" [email]="true"  required>
         </div>
 
         <div class="col-sm">
-          <label for="delivery">Verzendmethode:</label>
+          <label for="delivery">Uw verzendmethode:</label>
         </div>
         <div class="col-sm">
           <select id="delivery" name="delivery" [(ngModel)]="newUser.delivery" required>
@@ -39,17 +39,17 @@
         <ng-container *ngIf="afhalenSelected()">
           <div class="col-sm">
             <label for="adres">Straat:</label>
-            <input type="text" id="adres" name="adres" minlength="2"maxlength="80" pattern="[^[<>;*&%#=0-9]+$"[(ngModel)]="newUser.street" required>
+            <input type="text" id="adres" placeholder="ApeldoornseWeg" name="adres" minlength="2"maxlength="80" pattern="[^[<>;*&%#=0-9]+$"[(ngModel)]="newUser.street" required>
           </div>
 
           <div class="col-sm">
             <label for="housenumber">Huisnummer:</label>
-            <input type="text" id="housenumber" name="housenumber"  pattern="[^[;*<>&%#=]+$\d{0,3}\D{0,1}$"[(ngModel)]="newUser.housenumber" required>
+            <input type="text" id="housenumber"placeholder="64, 64a" name="housenumber"  pattern="[^[;*<>&%#=]+$\d{0,3}\D{0,1}$"[(ngModel)]="newUser.housenumber" required>
           </div>
 
           <div class="col-sm">
             <label for="postalcode">Postcode:</label>
-            <input type="text" id="postalcode" name="postalcode"pattern ="[1-9]{1}[0-9]{3}[a-zA-Z]{2}" [(ngModel)]="newUser.postalcode" required>
+            <input type="text" id="postalcode" name="postalcode"placeholder="1234AA"pattern ="[1-9]{1}[0-9]{3}[a-zA-Z]{2}" [(ngModel)]="newUser.postalcode" required>
           </div>
 
         </ng-container>

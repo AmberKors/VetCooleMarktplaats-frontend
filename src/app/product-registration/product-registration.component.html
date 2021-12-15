@@ -13,7 +13,7 @@
             <label for="name">Naam:</label>
           </div>
           <div class="col-sm">
-            <input type="text" id="name" name="name" pattern="[^<>;:].{4,50}" [(ngModel)]="newProduct.name" required>
+            <input type="text" id="name" name="name" minlength="3" maxlength="80" pattern="[^[;<>*&%#=]+$" [(ngModel)]="newProduct.name" required>
           </div>
         </div>
 
@@ -33,7 +33,7 @@
           <label for="description">Omschrijving:</label>
         </div>
         <div class="col-sm">
-            <textarea id="description" name="description" maxlength="200" pattern="[^<>;:].{4,200}"
+            <textarea id="description" name="description" minlength="4" maxlength="200" minlength="3" maxlength="80" pattern="[^[;<>*&%#=]+$"
                       [(ngModel)]="newProduct.description"
                       required></textarea>
         </div>
