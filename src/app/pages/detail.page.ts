@@ -11,7 +11,7 @@ export class DetailPage {
   id: string = "";
   product: Product;
   loggedInUser: User;
-  productFromUser: boolean;
+  mijnMarktplaats: boolean;
 
   constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductService) {
@@ -28,9 +28,9 @@ export class DetailPage {
 
 
         if (this.product.user.id == this.loggedInUser.id) {
-          this.productFromUser = true;
+          this.mijnMarktplaats = true;
         } else {
-          this.productFromUser = false;
+          this.mijnMarktplaats = false;
         }
 
       }

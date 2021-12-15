@@ -22,10 +22,8 @@ export class UserRegistrationComponent {
 
 
   addContact(): void {
-    console.log(this.newUser);
     this.service.add(this.newUser);
     this.newUser = {} as User;
-
   }
 
   afhalenSelected() {
@@ -34,9 +32,5 @@ export class UserRegistrationComponent {
     } else {
       return false;
     }
-  }
-
-  log() {
-    console.log(this.newUser.legalRequired);
   }
 }

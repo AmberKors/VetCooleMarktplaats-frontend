@@ -18,7 +18,7 @@ export class UserService {
 
   message$ = new Subject<string>();
 
-  constructor(private http: HttpClient, private loginService: LoginService, private toasty : ToastrService) {
+  constructor(private http: HttpClient, private loginService: LoginService, private toasty: ToastrService) {
   }
 
   add(u: User): void {
@@ -33,7 +33,6 @@ export class UserService {
         },
 
         error => {
-          console.log(error);
           this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );

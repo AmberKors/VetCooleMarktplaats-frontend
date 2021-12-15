@@ -36,7 +36,6 @@ export class SneakPeekComponent implements OnInit {
           let product: Product = this.productList[Math.floor(Math.random() * this.productList.length)];
           if (!this.productsToShow.includes(product)) {
             this.productsToShow.push(product);
-            console.log(product.id);
           }
         }
       } else {
