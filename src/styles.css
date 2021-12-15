@@ -12,14 +12,14 @@ body {
   background-color: rgba(255, 0, 0, 0);
 }
 
-input.ng-invalid  {
+input.ng-invalid {
   border: solid orangered 1px;
   border-radius: 5px;
 }
 
 textarea.ng-invalid {
   border: solid orangered 1px;
-border-radius: 5px;
+  border-radius: 5px;
 }
 
 
@@ -27,13 +27,6 @@ border-radius: 5px;
   color: white;
 }
 
-.btn-success{
-  margin-left: 2rem;
-}
-
-.btn-danger{
-  margin-left: 2rem;
-}
 @keyframes pulse-red {
   0% {
     transform: scale(0.95);

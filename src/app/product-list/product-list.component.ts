@@ -3,6 +3,7 @@ import {Product} from "../models/Product";
 import {ProductService} from "../services/product.service";
 import {ToastrService} from 'ngx-toastr';
 import {User} from "../models/User";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-product-list',
@@ -14,36 +15,25 @@ export class ProductListComponent implements OnInit {
   mijnMarktplaats: boolean;
   products: Product[] = [];
   searchText: string;
-  loggedInUser: User;
+  loggedInUser: User = this.userService.getLoggedInUser();
 
   constructor(private productService: ProductService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
-    let recievedFromStorage = localStorage.getItem('loggedInUser');
-    if (recievedFromStorage != null) {
-      this.loggedInUser = JSON.parse(recievedFromStorage);
-
-      if (this.mijnMarktplaats) {
-        this.productService.getProductsByUser(this.loggedInUser.id).subscribe(products => {
-          this.products = products;
-        })
-      } else {
-        this.productService.getProducts().subscribe(products => {
-          this.checkIfAlreadyInShoppingCart(products);
-        })
-      }
+    if (this.mijnMarktplaats) {
+      this.productService.getProductsByUser(this.loggedInUser.id).subscribe(products => {
+        this.products = products;
+      })
+    } else {
+      this.productService.getProducts().subscribe(products => {
+        this.products = products.filter(product =>
+          product.user.id != this.loggedInUser.id
+        ).filter(product => !product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id);
+      })
     }
-  }
-
-  checkIfAlreadyInShoppingCart(products: Product[]) {
-    this.products = [];
-    products.forEach(product => {
-      if (!product.shoppingCart || product.shoppingCart.id == this.loggedInUser.shoppingCart.id) {
-        this.products.push(product);
-      }
-    })
   }
 
   addToShoppingCart(product: Product) {

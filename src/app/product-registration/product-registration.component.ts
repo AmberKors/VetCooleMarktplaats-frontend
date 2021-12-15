@@ -3,6 +3,7 @@ import {Product} from "../models/Product";
 import {ProductService} from "../services/product.service";
 import {Category} from "../models/Category";
 import {ToastrService} from "ngx-toastr";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-product-registration',
@@ -17,20 +18,14 @@ export class ProductRegistrationComponent {
   categoryOptions = [];
 
   constructor(private service: ProductService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private userService: UserService) {
     // @ts-ignore
     this.categoryOptions = Object.keys(this.category);
   }
 
   addProduct(): void {
-    console.log(this.newProduct);
-
-    //add the user id to the post
-    let recievedFromStorage = localStorage.getItem('loggedInUser');
-    if (recievedFromStorage != null) {
-      this.newProduct.user = JSON.parse(recievedFromStorage);
-    }
-
+    this.newProduct.user = this.userService.getLoggedInUser();
     this.service.addProduct(this.newProduct)
     this.newProduct = {} as Product;
     this.showSuccess("Product is toegevoegd!");

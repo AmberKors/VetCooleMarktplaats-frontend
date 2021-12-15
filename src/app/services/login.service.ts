@@ -39,7 +39,6 @@ export class LoginService {
           localStorage.setItem('token', JSON.stringify(token));
         },
         error => {
-          console.log(error);
           this.toastr.error(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );

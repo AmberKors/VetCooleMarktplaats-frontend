@@ -6,6 +6,7 @@ import {Location} from "@angular/common";
 import {User} from "../models/User";
 import {ProductService} from "../services/product.service";
 import {ToastrService} from "ngx-toastr";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,13 +17,14 @@ export class ShoppingCartComponent implements OnInit {
   id: string = "";
   products: Product[] = [];
   totalPrice: number = 0;
-  loggedInUser: User;
+  loggedInUser: User = this.userService.getLoggedInUser();
 
   constructor(private activatedRoute: ActivatedRoute,
               private shoppingCartService: ShoppingCartService,
               private location: Location,
               private productService: ProductService,
-              private toastr: ToastrService) {
+              private toastr: ToastrService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -36,12 +38,7 @@ export class ShoppingCartComponent implements OnInit {
       this.calculateTotalPrice();
     })
 
-    let recievedFromStorage = localStorage.getItem('loggedInUser');
-    if (recievedFromStorage != null) {
-
-      this.loggedInUser = JSON.parse(recievedFromStorage);
-      this.shoppingCartService.getProductsFromShoppingCart(+this.loggedInUser.shoppingCart.id);
-    }
+    this.shoppingCartService.getProductsFromShoppingCart(+this.loggedInUser.shoppingCart.id);
   }
 
   calculateTotalPrice() {

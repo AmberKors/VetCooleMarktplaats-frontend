@@ -10,7 +10,6 @@ import {ToastrService} from "ngx-toastr";
 export class UserService {
 
   private uri = serverUrl + '/users';
-  private user: User;
 
   loggedInUser$ = new Subject<User>();
 
@@ -18,7 +17,7 @@ export class UserService {
 
   message$ = new Subject<string>();
 
-  constructor(private http: HttpClient, private loginService: LoginService, private toasty : ToastrService) {
+  constructor(private http: HttpClient, private loginService: LoginService, private toasty: ToastrService) {
   }
 
   add(u: User): void {
@@ -33,7 +32,6 @@ export class UserService {
         },
 
         error => {
-          console.log(error);
           this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );
@@ -53,4 +51,9 @@ export class UserService {
       this.loggedInUser$.next(user);
     })
   }
+
+  getLoggedInUser(): User {
+    return JSON.parse(<string>localStorage.getItem('loggedInUser'));
+  }
+
 }
