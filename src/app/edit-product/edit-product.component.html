@@ -7,7 +7,7 @@
     <td>
       <div *ngIf="!editing">      {{product.name}}</div>
       <div *ngIf="editing">
-        <input type="text" [(ngModel)]="product.name" required (input)="changeProduct()">
+        <input type="text" pattern="[^[;*&<>%#=]+$" [(ngModel)]="product.name" required (input)="changeProduct()">
       </div>
     </td>
   </tr>
@@ -51,7 +51,7 @@
     <td>
       <div *ngIf="!editing">{{product.description}}</div>
       <div *ngIf="editing">
-        <textarea id="description" name="username" maxlength="200" [(ngModel)]="product.description"
+        <textarea id="description" name="description" maxlength="200" pattern="[^[;*&<>%#=]+$" [(ngModel)]="product.description"
                   (input)="changeProduct()"
                   required></textarea>
       </div>
